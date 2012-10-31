@@ -25,3 +25,9 @@
   * Кроме формы и вам необходимо сделать набор инпутов, которыми вы сможете управлять фильтрацией текущей коллекции
 
 Пример предствления формы [http://jsfiddle.net/LMebS/](http://jsfiddle.net/LMebS/)
+
+## Ссылки
+
+  * http://htmlbook.ru/html/input
+  * http://htmlbook.ru/html/input/type
+  * http://caniuse.com/#search=input
