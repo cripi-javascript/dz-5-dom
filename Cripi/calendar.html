@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="main.css" type="text/css" rel="stylesheet" />
+<title>События</title>
+</head>
+
+<body>
+<h1>Добро пожаловать в конструктор событий, <span id="username">Username</span><input type="text" name="username" id="userinput">!</h1>
+<!-- Форма создания события-->
+<div id="eventBuilder">
+<hr/>
+<h2>Создайте своё собственное событие</h2>
+<table>
+<form>
+	<tr>
+		<td>Название события</td>
+        <td><input type="text" name="call" id="call"></td>	
+	</tr>
+    <tr>
+		<td>Дата начала</td>
+        <td><input type="date" name="dateStart" id="dateStart"></td>	
+	</tr>
+    <tr>
+		<td>Дата окончания</td>
+        <td><input type="date" name="dateFinish" id="dateFinish"></td>	
+	</tr>
+    <tr>
+		<td>Описание события</td>
+        <td><input type="text" name="description" name="description"></td>	
+	</tr>
+    <tr>
+		<td>Предшествующие связанные события</td>
+        <td>
+        <select name="parents" id="parents">
+        </select>
+        </td>	
+	</tr>
+    <tr>
+		<td>Участники события</td>
+        <td><input type="text" name="people" id="people"></td>	
+	</tr>
+    <tr>
+		<td>Место проведения</td>
+        <td>Тут будет что-то что позволяет сохранить точку на яндекс картах</td>	
+	</tr>
+    <tr>
+		<td>Приватность</td>
+        <td><input type="radio" name="prinvat" value="false" checked>Общедоступное<input type="radio" name="privat" value="true">Приватное<td>	
+	</tr>
+    <tr>
+		<td>Возрастной рейтинг</td>
+        <td>
+        <input type="radio" name="EvRS" value="0">0+
+        <input type="radio" name="EvRS" value="3">3+
+        <input type="radio" name="EvRS" value="6">6+
+        <input type="radio" name="EvRS" value="12">12+
+        <input type="radio" name="EvRS" value="16">16+
+        <input type="radio" name="EvRS" value="18" checked>18+
+        </td>	
+	</tr>
+    <tr>
+		<td>Внешняя ссылка</td>
+        <td><input type="text" name="Url" id="url"></td>	
+	</tr>
+    <tr>
+    <td>
+    <!--<button  value="">Добавить событие</button>-->
+    <div><p  id="createButton">Добавить событие</p></div>
+    </td>
+    </tr>
+</form>
+</table>
+</div>
+
+<!-- Конец формы -->
+<!-- Таблица ввёденых событий-->
+<div id="eventsContainer">
+<hr/>
+<h2>Созданные события</h2>
+<table id="tableOfEvents"></table>
+</div>
+<!-- Конец таблицы -->
+<!-- Разное-->
+<div id="others"></div>
+<script src="move.js" type="text/javascript"></script>
+</body>
+</html>

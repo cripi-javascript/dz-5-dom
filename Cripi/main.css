@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+#username {border-bottom:dotted thin;}
+#createButton{padding: 10px 20px;
+			  background:#0CF;
+			  color:#FFF;}
+#tableOfEvents tr td.nodata {border:#FFF thin solid;
+							background:#FDD;
+							padding:5px;
+							width:60px;}
+#tableOfEvents tr td{border:#FFF thin solid;
+				  background:#EEE;
+				  padding:5px;
+				  min-width:100px;}
+
