@@ -8,9 +8,10 @@
 #tableOfEvents tr td.nodata {border:#FFF thin solid;
 							background:#FDD;
 							padding:5px;
-							width:60px;}
+							}
 #tableOfEvents tr td{border:#FFF thin solid;
-				  background:#EEE;
+				  background:#DFFFED;
 				  padding:5px;
-				  min-width:100px;}
+				  min-width:100px;
+				  max-width:250px;}
 

@@ -4,8 +4,9 @@ var eventFields = {'user':'Пользователь',
 'call':'Название события',
 'dateStart':'Дата начала',
 'dateFinish':'Дата окончания',
+'description':'Описание',
 'location':'Место проведения',
-'parent':'Предшествующие связанные события',
+'parent':'Предшествующие события',
 'people':'Участники',
 'url':'Ссылка на событие в сети',
 'private':'Приватность события',
@@ -57,14 +58,29 @@ addButton.addEventListener('click', function(event){
 	var call = document.getElementById('call').value ;
 	var dateStart = document.getElementById('dateStart').value;
 	var dateFinish = document.getElementById('dateFinish').value;
-	var parent = document.getElementById('parents').value;
-	if (parent == ''){
+	var parentSelect = document.getElementById('parents');
+	var parent = parentSelect.value;
+	if (parent == 'Выберите событие'){
 		 parent = []};
+	var description = document.getElementById('description').value
 	var people = document.getElementById('people').value;
 	var url = document.getElementById('url').value;
+	function getRadioGroupValue(radioGroupObj)
+	 {
+ 	 for (var i=0; i < radioGroupObj.length; i++)
+    	if (radioGroupObj[i].checked) return radioGroupObj[i].value;
+  	 return null;
+	 }
+	var EvRS = getRadioGroupValue(document.constructor.EvRS);
+	var private = getRadioGroupValue(document.constructor.private);
+	
 	//////////////Создаём событие конструктором или чем-то похожим
-	Item = {'user':user, 'call':call, 'dateStart':dateStart, 'dateFinish':dateFinish, 'parent':parent, 'people':people, 'url':url};
+	Item = {'user':user, 'call':call, 'dateStart':dateStart, 'dateFinish':dateFinish, 'parent':parent,'description':description, 'people':people, 'url':url, 'EvRS':EvRS, 'private':private};
 	Collection[index]= Item;
+	option = document.createElement('option');
+	option.innerHTML=Item['call'];
+	option.setAttribute('value',Item['call']);
+	parentSelect.appendChild(option);
 	index+=1;
 	//////////////////////////////////////////////////////////////
 	

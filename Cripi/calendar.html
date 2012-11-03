@@ -13,7 +13,7 @@
 <hr/>
 <h2>Создайте своё собственное событие</h2>
 <table>
-<form>
+<form name="constructor">
 	<tr>
 		<td>Название события</td>
         <td><input type="text" name="call" id="call"></td>	
@@ -28,12 +28,13 @@
 	</tr>
     <tr>
 		<td>Описание события</td>
-        <td><input type="text" name="description" name="description"></td>	
+        <td><input type="text" name="description" id="description"></td>	
 	</tr>
     <tr>
 		<td>Предшествующие связанные события</td>
         <td>
         <select name="parents" id="parents">
+        <option disabled>Выберите событие</option>
         </select>
         </td>	
 	</tr>
@@ -47,17 +48,17 @@
 	</tr>
     <tr>
 		<td>Приватность</td>
-        <td><input type="radio" name="prinvat" value="false" checked>Общедоступное<input type="radio" name="privat" value="true">Приватное<td>	
+        <td><input type="radio" name="private" value="Открытое" checked>Открытое<input type="radio" name="private" value="Приватное">Приватное<td>	
 	</tr>
     <tr>
 		<td>Возрастной рейтинг</td>
         <td>
-        <input type="radio" name="EvRS" value="0">0+
-        <input type="radio" name="EvRS" value="3">3+
-        <input type="radio" name="EvRS" value="6">6+
-        <input type="radio" name="EvRS" value="12">12+
-        <input type="radio" name="EvRS" value="16">16+
-        <input type="radio" name="EvRS" value="18" checked>18+
+        <input type="radio" name="EvRS" value="0+">0+
+        <input type="radio" name="EvRS" value="3+">3+
+        <input type="radio" name="EvRS" value="6+">6+
+        <input type="radio" name="EvRS" value="12+">12+
+        <input type="radio" name="EvRS" value="16+">16+
+        <input type="radio" name="EvRS" value="18+" checked>18+
         </td>	
 	</tr>
     <tr>
