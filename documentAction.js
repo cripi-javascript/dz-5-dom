@@ -17,14 +17,56 @@
         if (!validateDate(start, document.querySelector('#from_help'))) { alert("Событие не было добавлено. Ошибка"); return; };
         if (!validateNumber(remindTime, document.querySelector('#remindTime_help'))) { alert("Событие не было добавлено. Ошибка"); return; };
 
-        ListOfEvents.add({ name: name,
-                           start: start,
-                           end: end,
-                           location: location,
-                           raiting: raiting,
-                           description: description,
-                           remindTime: remindTime});
+        var element = new Event({
+                                name: name,
+                                start: new Date(start),
+                                end: new Date(end),
+                                location: location,
+                                raiting: raiting,
+                                description: description,
+                                remindTime: remindTime}).validate();
+        ListOfEvents.add(element);
+
+        placeElement(element);
 }
+
+    function placeElement(element) {
+        var el = document.createElement('li');
+        el.className = 'event_item';
+
+        var name = document.createElement('div')
+        name.textContent = "Название: " + element.name;
+
+        var start = document.createElement('div')
+        start.textContent = "Начало: " + element.start;
+
+        var end = document.createElement('div')
+        end.textContent = "Окончание: " + element.end;
+
+        var location = document.createElement('div')
+        location.textContent = "Местоположение: " + element.location;
+
+        var remindTime = document.createElement('div')
+        remindTime.textContent = "Напомнить за: " + element.remindTime + "минут";
+
+        var description = document.createElement('div')
+        description.textContent = "Описание: " + element.description;
+        
+        var raiting = document.createElement('div')
+        raiting.textContent = "Рейтинг: " + element.raiting;
+
+        var fragment = document.createDocumentFragment();
+        fragment.appendChild(el);
+        el.appendChild(start);
+        el.appendChild(end);
+        el.appendChild(location);
+        el.appendChild(remindTime);
+        el.appendChild(description);
+        el.appendChild(raiting);
+
+        var parent = document.querySelector(".events");
+        parent.appendChild(fragment);
+    }
 
     exports.addListener = function() {
         var name = document.querySelector("#title");

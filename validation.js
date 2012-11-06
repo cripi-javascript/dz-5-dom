@@ -30,7 +30,7 @@
 
     exports.validateDate = function (input, helpText) {
 
-        if (!isDate(input)) {
+        if (!isDate(new Date(input))) {
             showError(true, helpText);
             return false;
         }

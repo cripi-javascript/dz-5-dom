@@ -1,12 +1,15 @@
 ﻿(function (exports) {
     "use strict";
 
-exports.isDate = function c(date) {
+exports.isDate = function (date) {
 
     if (typeof date === 'undefined') {
         return false;
     }
     if (typeof date.getMonth !== 'function') {
+        return false;
+    }
+    if( isNaN( date.getMonth())) {
         return false;
     }
     return true;

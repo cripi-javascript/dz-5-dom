@@ -12,8 +12,6 @@
     <script type="text/javascript" src="validation.js"></script>
 </head>
 <body onload="addListener()">
-    <div>
-    </div>
     <div id="frame">
         <form id=form >
             <div class="field">Название:  <input type="text" id="title" name="title" />
@@ -37,11 +35,11 @@
             </div>
             <div class="field">Напомнить за: <input type="number" id="remindTime" name="remindTime">минут
             </div>
-            <input type="submit" value="Добавить событие" onclick="preventDefault();">
-            <input type="reset" value="Отменить">
+            <input type="button" value="Добавить событие" onclick="preventDefault();">
+
         </form>
     </div>
-    <div>
+    <div id="frame">
          <div id="title_help" class="help">Введите название события</div>
          <div id="from_help" class="help">Введите корректную дату</div>
          <div id="to_help" class="help">Введите корректную дату</div>
@@ -50,6 +48,10 @@
          <div class="help">D</div>
          <div class="help">D</div>
          <div id="remindTime_help" class="help">Введите корректное число</div>
+    </div>
+    
+    <div class="collection">
+    <ul class="events"></ul>
     </div>
 </body>
 </html>
