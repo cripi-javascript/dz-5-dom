@@ -28,6 +28,7 @@
         ListOfEvents.add(element);
 
         placeElement(element);
+        document.forms["form"].reset();
 }
 
     function placeElement(element) {

@@ -13,7 +13,7 @@
 </head>
 <body onload="addListener()">
     <div id="frame">
-        <form id=form >
+        <form id="form" >
             <div class="field">Название:  <input type="text" id="title" name="title" />
             </div>
             <div class="field">С:  <input type="date" id="from" name="from"></div>
@@ -38,6 +38,16 @@
             <input type="button" value="Добавить событие" onclick="preventDefault();">
 
         </form>
+        <div class="filter">
+            <div class="selecter">Выбрать</div>
+            <label><input type="radio" name="select"/>Предстоящие события</label><br>
+            <label><input type="radio" name="select"/>Прошедшие события</label>
+            <div class="selecter">Отсортировать по</div>
+                <label><input type="radio" name="sort"/>Названию</label><br>
+                <label><input type="radio" name="sort"/>Началу</label><br>
+                <label><input type="radio" name="sort"/>Рейтингу</label><br>
+                <label><input type="radio" name="sort"/>Времени окончания</label>
+        </div>
     </div>
     <div id="frame">
          <div id="title_help" class="help">Введите название события</div>

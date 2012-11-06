@@ -78,9 +78,36 @@ Events.prototype.byStartTime = function () {
     });
 };
 
+Events.prototype.byName = function () {
+
+    return this.sort(function (a, b) {
+        return a.name - b.name;
+    });
+};
+
 /**
  * Возвращает события,из items отсортированной по дате начала по  возр/убыв 
  * от старых обытий к новым / наоборот.
+ * По умолчанию сортирует в порядке возрастания
+ *
+ * @param {bool} isAscending - необязательный параметр - указывает порядок сортировки. 
+ * при отсутсвии сортируется по возрастанию.
+ *
+ * @return {Collection}  - Новый объект типа Collection
+*/
+Events.prototype.sortByName = function (isAscending) {
+
+    isAscending = isAscending || false;
+
+    if (isAscending) {
+        return this.byName();
+    }
+    return this.byName()
+             .reverse();
+};
+
+/**
+ * Возвращает события,из items отсортированной по названию по  возр/убыв 
  * По умолчанию сортирует в порядке возрастания
  *
  * @param {bool} isAscending - необязательный параметр - указывает порядок сортировки. 
