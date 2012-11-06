@@ -4,25 +4,23 @@
     <meta charset="utf-8">
     <title>Календарь событий</title>
     <link rel="stylesheet" type="text/css" href="index.css">
-    <script type="text/javascript" src="../model.js"></script>
-    <script type="text/javascript" src="../collection.js"></script>
-    <script type="text/javascript" src="../event.js"></script>
-    <script type="text/javascript" src="../Events.js"></script>
-    <script type="text/javascript">
-        function placeEvent() {
-            var name = document.getElementById("title").value;
-        }
-    </script>
+    <script type="text/javascript" src="model.js"></script>
+    <script type="text/javascript" src="collection.js"></script>
+    <script type="text/javascript" src="event.js"></script>
+    <script type="text/javascript" src="Events.js"></script>
+    <script type="text/javascript" src="documentAction.js"></script>
+    <script type="text/javascript" src="validation.js"></script>
 </head>
-<body>
+<body onload="addListener()">
     <div>
     </div>
     <div id="frame">
         <form id=form >
-            <div class="field">Название:  <input type="text" id="title" name="title"></div>
+            <div class="field">Название:  <input type="text" id="title" name="title" />
+            </div>
             <div class="field">С:  <input type="date" id="from" name="from"></div>
             <div class="field">По:  <input type="date" id="to" name="to"></div>
-            <div class="field">Место:  <input type="text" id="location" name="location"></div>
+            <div class="field">Место:  <input type="text" id="location" name="location" ></div>
             <div class="field">Важность события: 
                     <select id="raiting" name="raiting" >
                         <option value="5">*****
@@ -34,14 +32,24 @@
                     </select>
             </div>
             <div class="field">Описание:
-                    <textarea id="description" name="description" cols=20 rows=5>
+                    <textarea id="description" name="description" rows=3 >
                     </textarea>
             </div>
-            <div class="field">Напоминнить за: <input type="text" id="remindTime" name="remindTime">минут
+            <div class="field">Напомнить за: <input type="number" id="remindTime" name="remindTime">минут
             </div>
-            <input type="submit" value="Добавить событие" onclick="placeEvent(this.form);">
+            <input type="submit" value="Добавить событие" onclick="preventDefault();">
             <input type="reset" value="Отменить">
         </form>
+    </div>
+    <div>
+         <div id="title_help" class="help">Введите название события</div>
+         <div id="from_help" class="help">Введите корректную дату</div>
+         <div id="to_help" class="help">Введите корректную дату</div>
+         <div class="help">D</div>
+         <div class="help">D</div>
+         <div class="help">D</div>
+         <div class="help">D</div>
+         <div id="remindTime_help" class="help">Введите корректное число</div>
     </div>
 </body>
 </html>

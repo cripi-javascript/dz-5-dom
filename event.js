@@ -1,7 +1,7 @@
 ﻿(function (exports) {
     "use strict";
 
-function isDate(date) {
+exports.isDate = function c(date) {
 
     if (typeof date === 'undefined') {
         return false;
@@ -36,6 +36,7 @@ inherits(Event, Model);
  *            location - место
  *            remindTime - за сколько минут до события напомнить
  *            description - описание
+ *            raiting - важность события
  * }
  
  * @param {object} obj             Объект
@@ -46,6 +47,7 @@ inherits(Event, Model);
  *          end: new Date("2012-10-20 12:50:00"),
  *          location: "5 этаж",
  *          remindTime: 10,
+ *          raiting:5,
  *          description: "Взять бумагу и ручку, не брать бук!"
  *    })
  *
