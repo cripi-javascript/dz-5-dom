@@ -1,34 +1,34 @@
 ﻿(function (exports) {
     "use strict";
 
-exports.isDate = function (date) {
+    exports.isDate = function (date) {
 
-    if (typeof date === 'undefined') {
-        return false;
-    }
-    if (typeof date.getMonth !== 'function') {
-        return false;
-    }
-    if( isNaN( date.getMonth())) {
-        return false;
-    }
-    return true;
-}
+        if (typeof date === 'undefined') {
+            return false;
+        }
+        if (typeof date.getMonth !== 'function') {
+            return false;
+        }
+        if (isNaN(date.getMonth())) {
+            return false;
+        }
+        return true;
+    };
 
-exports.inherits = function (constructor, superconstructor) {
+    exports.inherits = function (constructor, superconstructor) {
 
-    var Func = function () { };
+        var Func = function () { };
 
-    Func.prototype = superconstructor.prototype;
-    constructor.prototype = new Func();
-}
+        Func.prototype = superconstructor.prototype;
+        constructor.prototype = new Func();
+    };
 
-exports.Event = function (data) {
+    exports.Event = function (data) {
 
-    Model.apply(this, arguments);
-};
+        Model.apply(this, arguments);
+    };
 
-inherits(Event, Model);
+    inherits(Event, Model);
 
 /**
  * Валидирует объект event, либо undefined, если в объекте  отсутвуют обязательные поля
@@ -56,31 +56,31 @@ inherits(Event, Model);
  *
  * @return {Object}
  */
-Event.prototype.validate = function () {
+    Event.prototype.validate = function () {
 
-    var remindTime = this.remindTime || 0;
-    this.raiting = this.raiting || 0;
+        var remindTime = this.remindTime || 0;
+        this.raiting = this.raiting || 0;
 
-    if (!isDate(this.get("start"))) {
-        throw new Error('Field "start" must be Date format');
-    }
+        if (!isDate(this.get("start"))) {
+            throw new Error('Field "start" must be Date format');
+        }
 
-    if (!isDate(this.end)) {
-        this.end = this.start;
-    }
+        if (!isDate(this.end)) {
+            this.end = this.start;
+        }
 
-    if (this.end < this.start) {
-        this.end = this.start;
-    }
+        if (this.end < this.start) {
+            this.end = this.start;
+        }
 
-    return {
-        "name": this.name || "(Нет темы)",
-        "start": this.start,
-        "end": this.end,
-        "location": this.location || "",
-        "remindTime": remindTime,
-        "description": this.description || "(отсутствует)",
-        "raiting": this.raiting
+        return {
+            "name": this.name || "(Нет темы)",
+            "start": this.start,
+            "end": this.end,
+            "location": this.location || "",
+            "remindTime": remindTime,
+            "description": this.description || "(отсутствует)",
+            "raiting": this.raiting
+        };
     };
-};
 }(window));

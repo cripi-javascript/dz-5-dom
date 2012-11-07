@@ -5,31 +5,39 @@
 
     function filterEvents(listEvents) {
         switch (filterOption) {
-            case "future":
-                return listEvents.coming();
-            case "past":
-                return listEvents.past();
-            default:
-                return listEvents;
+        case "future":
+            return listEvents.coming();
+        case "past":
+            return listEvents.past();
+        default:
+            return listEvents;
         }
     }
 
     function sortEvents(listEvents) {
         switch (sortOption) {
-            case "byName":
-                return ListOfEvents.sortByName();
-            case "byStart":
-                return ListOfEvents.sortByTime();
-            case "byRaiting":
-                return ListOfEvents.sortByRaiting();
-            default:
-                return ListOfEvents;
+        case "byName":
+            return ListOfEvents.sortByName();
+        case "byStart":
+            return ListOfEvents.sortByTime();
+        case "byRaiting":
+            return ListOfEvents.sortByRaiting();
+        default:
+            return ListOfEvents;
         }
     }
 
-    exports.changeDocument = function(changeType) {
-        var parent = document.querySelector(".collection");
-        var removeList = document.querySelector(".events");
+/**
+ * Сортирует и фильтрует события в соответствии с указанными опциями.
+ *
+ * @param {string} changeType - если указана строка "sort", то события также будут отсортированы,
+ *  инчае - только отфильтрованы
+ * @return коллекция объектов типа event
+*/
+
+    exports.changeDocument = function (changeType) {
+        var parent = document.querySelector(".collection"),
+            removeList = document.querySelector(".events");
         parent.removeChild(removeList);
 
         var addList = document.createElement('ul');
@@ -43,7 +51,7 @@
 
         var length = filterList.length();
 
-        for( var i = 0; i < length; i++)
+        for (var i = 0; i < length; i++)
         {
             var element = filterList.items[i];
             var el = addLiElement(element);
