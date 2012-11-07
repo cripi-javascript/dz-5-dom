@@ -1,17 +1,18 @@
 ﻿(function (exports) {
     "use strict";
 
-    exports.ListOfEvents = new Events();
+    ListOfEvents = new Events();
+    sortedList = new Events();
 
-    exports.filterOption = "all";
-    exports.sortOption = "without";
+    filterOption = "all";
+    sortOption = "without";
 
 /**
  * Добавляет новое событие в список. Если установлены опции фильтрации и сортировки 
  * - то располагает элменты на странице, в с-ии с ними
  *
 */
-    exports.preventDefault = function () {
+    function preventDefault() {
 
         var name = document.querySelector("#title").value,
             start = document.querySelector("#from").value,
@@ -41,6 +42,66 @@
         document.forms["form"].reset();
 };
 
+    function filterEvents(listEvents) {
+        switch (filterOption) {
+        case "future":
+            return listEvents.coming();
+        case "past":
+            return listEvents.past();
+        default:
+            return listEvents;
+        }
+    }
+
+    function sortEvents(listEvents) {
+        switch (sortOption) {
+        case "byName":
+            return ListOfEvents.sortByName();
+        case "byStart":
+            return ListOfEvents.sortByTime();
+        case "byRaiting":
+            return ListOfEvents.sortByRaiting();
+        default:
+            return ListOfEvents;
+        }
+    }
+
+/**
+ * Сортирует и фильтрует события в соответствии с указанными опциями.
+ *
+ * @param {string} changeType - если указана строка "sort", то события также будут отсортированы,
+ *  инчае - только отфильтрованы
+ * @return коллекция объектов типа event
+*/
+
+    function changeDocument(changeType) {
+        var parent = document.querySelector(".collection"),
+            removeList = document.querySelector(".events");
+        parent.removeChild(removeList);
+
+        var addList = document.createElement('ul');
+        addList.className = "events";
+
+        var fragment = document.createDocumentFragment();
+        if (changeType === "sort") {
+            sortedList = sortEvents(ListOfEvents);
+        }
+        var filterList = filterEvents(sortedList);
+
+        var length = filterList.length();
+
+        for (var i = 0; i < length; i++)
+        {
+            var element = filterList.items[i];
+            var el = addLiElement(element);
+            addList.appendChild(el);
+        }
+
+        var parent = document.querySelector(".collection");
+        fragment.appendChild(addList);
+        parent.appendChild(fragment);
+}
+
 /**
  * Создает DOM-элемент типа li, заполняется полями из объекта
  *
@@ -49,7 +110,7 @@
  * @return Возвращает созданный дом-элемент типа li
 */
 
-    exports.addLiElement = function (element) {
+    function addLiElement (element) {
         var el = document.createElement('li');
         el.className = 'event_item';
 
@@ -94,6 +155,7 @@
         var remindTime = document.querySelector("#remindTime");
         var filters = document.querySelectorAll('.filter');
         var sort = document.querySelectorAll('.sort');
+        var button = document.querySelectorAll('#addButton');
 
         name.addEventListener('blur', function(event) {
             var cur = event.currentTarget;
@@ -123,5 +185,7 @@
                 changeDocument("sort");
             });
         }
+
+        button.addEventListener('click', preventDefault);
     }
 }(window));

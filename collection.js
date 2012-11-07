@@ -1,7 +1,7 @@
 ﻿(function (exports) {
     "use strict";
 
-exports.Collection = function (items) {
+var Collection = function (items) {
 
     this.items = [];
     var key;
@@ -13,7 +13,9 @@ exports.Collection = function (items) {
     }
 };
 
-Collection.prototype.constructor = exports.Collection;
+exports.Collection = Collection;
+
+Collection.prototype.constructor = Collection;
 
 /**
  * Добавляет в коллекцию объект
