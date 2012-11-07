@@ -1,0 +1,19 @@
+*{
+    padding: 2;
+}
+#eventFactory {
+    float: left;
+    border:4px double black;
+}
+#eventList {
+    color: red;
+    overflow: hidden;
+    border:4px double black;
+}
+#AddInputs {
+    float: left;
+}
+
+#messageErrorAddInputs {
+    overflow: hidden;
+}
