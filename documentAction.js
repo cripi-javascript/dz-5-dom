@@ -1,11 +1,11 @@
 ﻿(function (exports) {
     "use strict";
 
-    ListOfEvents = new Events();
-    sortedList = new Events();
+    var ListOfEvents = new Events();
+    var sortedList = new Events();
 
-    filterOption = "all";
-    sortOption = "without";
+    var filterOption = "all";
+    var sortOption = "without";
 
 /**
  * Добавляет новое событие в список. Если установлены опции фильтрации и сортировки 
@@ -155,7 +155,7 @@
         var remindTime = document.querySelector("#remindTime");
         var filters = document.querySelectorAll('.filter');
         var sort = document.querySelectorAll('.sort');
-        var button = document.querySelectorAll('#addButton');
+        var button = document.querySelector("#addButton");
 
         name.addEventListener('blur', function(event) {
             var cur = event.currentTarget;
