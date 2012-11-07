@@ -8,8 +8,9 @@
     <script type="text/javascript" src="collection.js"></script>
     <script type="text/javascript" src="event.js"></script>
     <script type="text/javascript" src="Events.js"></script>
-    <script type="text/javascript" src="documentAction.js"></script>
     <script type="text/javascript" src="validation.js"></script>
+    <script type="text/javascript" src="documentSelector.js"></script>
+    <script type="text/javascript" src="documentAction.js"></script>
 </head>
 <body onload="addListener()">
     <div id="frame">
@@ -38,15 +39,16 @@
             <input type="button" value="Добавить событие" onclick="preventDefault();">
 
         </form>
-        <div class="filter">
+        <div class="select">
             <div class="selecter">Выбрать</div>
-            <label><input type="radio" name="select"/>Предстоящие события</label><br>
-            <label><input type="radio" name="select"/>Прошедшие события</label>
+            <label><input type="radio" class="filter" name="filter" value="all" CHECKED/>Все события</label><br>
+            <label><input type="radio" class="filter" name="filter" value="future"/>Предстоящие события</label><br>
+            <label><input type="radio" class="filter" name="filter" value="past"/>Прошедшие события</label>
             <div class="selecter">Отсортировать по</div>
-                <label><input type="radio" name="sort"/>Названию</label><br>
-                <label><input type="radio" name="sort"/>Началу</label><br>
-                <label><input type="radio" name="sort"/>Рейтингу</label><br>
-                <label><input type="radio" name="sort"/>Времени окончания</label>
+                <label><input type="radio" class="sort" name="sort" value="byName"/>Названию</label><br>
+                <label><input type="radio" class="sort" name="sort" value="byStart"/>Началу</label><br>
+                <label><input type="radio" class="sort" name="sort" value="byRaiting"/>Рейтингу</label><br>
+                <label><input type="radio" class="sort" name="sort" value="without" CHECKED/>Без сортировки</label>
         </div>
     </div>
     <div id="frame">

@@ -3,6 +3,9 @@
 
     exports.ListOfEvents = new Events();
 
+    exports.filterOption = "all";
+    exports.sortOption = "without";
+
     exports.preventDefault = function() {
 
         var name = document.querySelector("#title").value;
@@ -25,13 +28,13 @@
                                 raiting: raiting,
                                 description: description,
                                 remindTime: remindTime}).validate();
-        ListOfEvents.add(element);
+        ListOfEvents = ListOfEvents.add(element);
 
-        placeElement(element);
+        changeDocument("sort");
         document.forms["form"].reset();
 }
 
-    function placeElement(element) {
+    exports.addLiElement = function (element) {
         var el = document.createElement('li');
         el.className = 'event_item';
 
@@ -56,8 +59,7 @@
         var raiting = document.createElement('div')
         raiting.textContent = "Рейтинг: " + element.raiting;
 
-        var fragment = document.createDocumentFragment();
-        fragment.appendChild(el);
+        el.appendChild(name);
         el.appendChild(start);
         el.appendChild(end);
         el.appendChild(location);
@@ -65,14 +67,15 @@
         el.appendChild(description);
         el.appendChild(raiting);
 
-        var parent = document.querySelector(".events");
-        parent.appendChild(fragment);
+        return el;
     }
 
     exports.addListener = function() {
         var name = document.querySelector("#title");
         var start = document.querySelector("#from");
         var remindTime = document.querySelector("#remindTime");
+        var filters = document.querySelectorAll('.filter');
+        var sort = document.querySelectorAll('.sort');
 
         name.addEventListener('blur', function(event) {
             var cur = event.currentTarget;
@@ -88,5 +91,19 @@
             var cur = event.currentTarget;
             validateNumber(remindTime.value, document.querySelector('#remindTime_help'));
         });
+
+        for(var i=0; i < filters.length; i++) {
+            filters[i].addEventListener('change', function(event) {
+                filterOption = document.querySelector('input[name="filter"]:checked').value; 
+                changeDocument("filter");
+            });
+        }
+
+        for(var i=0; i < sort.length; i++) {
+            sort[i].addEventListener('change', function(event) {
+                sortOption = document.querySelector('input[name="sort"]:checked').value; 
+                changeDocument("sort");
+            });
+        }
     }
 }(window));

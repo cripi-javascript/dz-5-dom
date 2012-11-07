@@ -66,4 +66,14 @@ Collection.prototype.sort = function (selector) {
 
     return new this.constructor(this.items.sort(selector));
 };
+
+Collection.prototype.reverse = function () {
+
+    return new this.constructor(this.items.reverse());
+};
+
+Collection.prototype.length = function (selector) {
+
+    return this.items.length;
+};
 }(window));

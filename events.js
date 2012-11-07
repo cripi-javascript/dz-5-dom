@@ -121,10 +121,10 @@ Events.prototype.sortByTime = function (isAscending) {
 
     if (isAscending) {
         return this
-               .byStartTime();
+               .byStartTime().reverse();
     }
-    return this.byStartTime()
-            .reverse();
+    return this.byStartTime();
+            
 };
 
 /**
@@ -143,10 +143,10 @@ Events.prototype.sortByRaiting = function (isAscending) {
 
     if (isAscending) {
         return this
-               .byRaiting();
+               .byRaiting()
+               .reverse();
     }
     return this
-            .byRaiting()
-            .reverse();
+            .byRaiting();
 };
 }(window));
