@@ -4,45 +4,234 @@
 </head>
 <body>
 <div id = "calendary">
-    <div id = "eventFactory">
-        <div id = "AddInputs">
+    <div id = "ActionWithEventList">
+        <div id = "eventFactory">
+            <div>
+                <span class = "TitleAddEvent">Начало</span>
+                <input type="date" id="startNewEvent"></input>
+                <span class="Error">Error1</span>
+            </div>
+            <div>
+                <span class = "TitleAddEvent">Конец</span>
+                <input type="date" id="finishNewEvent"></input>
+                <span class="Error">Error1</span>
+            </div>
+            <div>
+                <span class = "TitleAddEvent">Что</span>
+                <input type="text" id="nameLocEvent"></input>
+                <span class="Error">Error1</span>
+            </div>
+            <div>
+                <span class = "TitleAddEvent">Где? (</span>
+                <input type="text" id="xLocEvent"></input>
+                <span class = "TitleAddEvent">;</span>
+                <input type="text" id="yLocEvent"></input>
+                <span class = "TitleAddEvent">)</span>
+                <span class="Error">Error1</span>
+            </div>
+            <div>
+                <span class = "TitleAddEvent">Важность </span>
+                <input type="text" id="starEvent"></input>
+                <span class="Error">Error1</span>
+            </div>
+            <div>
+                <span class = "TitleAddEvent">Цена посещения </span>
+                <input type="text" id="costEvent"></input>
+                <span></span>
+                <span class="Error">Error1</span>
+            </div>
+            
+            <div>
+                <div class = "TitleAddEvent">Список друзей:</div>
+                <ol id = "listFriensEvent">
+                    <li><input type="text"></input></li>
+                    <li><input type="text"></input></li>
+                    <li><input type="text"></input></li>
+                </ol>
                 <div>
-                    <span>Начало</span>
-                    <input type="date" id="startNewEvent"></input>
-                    <span>Error1</span>
+                <input type="button" value="Добавить еще друга"></input>
+            </div>
+            </div>
+            <div>
+                <input type="button" value="Добавить событие"></input>
+            </div>
+        </div>
+        <div id = "FilterEventList">
+            
+            <div id = "FIlterDateEventList">
+                <div>
+                    <span>Показать события, которые ...</span>
                 </div>
                 <div>
-                    <span>Конец</span>
-                    <input type="date" id="finishNewEvent"></input>
-                    <span>Error1</span>
+                    <span>Вообще есть</span>
+                    <input type="radio" name="FilterTimerRadioButtons" value="All" checked>
                 </div>
                 <div>
-                    <span>Что</span>
-                    <input type="text" id="nameLocEvent"></input>
-                    <span>Error1</span>
+                    <span>Будут завтра</span>
+                    <input type="radio" name="FilterTimerRadioButtons" value="Day">
                 </div>
                 <div>
-                    <span>Где? (</span>
-                    <input type="text" id="xLocEvent"></input>
-                    <input type="text" id="yLocEvent"></input>
-                    <span>)</span>
-                    <span>Error1</span>
+                    <span>Будут через неделю</span>
+                    <input type="radio" name="FilterTimerRadioButtons" value="Week">
                 </div>
                 <div>
-                    <span>Важность </span>
-                    <input type="text" id="starEvent"></input>
-                    <span></span>
-                    <span>Error1</span>
+                    <span>Будут через месяц</span>
+                    <input type="radio" name="FilterTimerRadioButtons" value="Month">
                 </div>
+                <div>
+                    <span>Будут проходить в период с</span>
+                    <input type="date" id="startFilterEvent"></input>
+                    <span class = "TitleAddEvent">до</span>
+                    <input type="date" id="finishFilterEvent"></input>
+                    </div>
+            </div>
+            <div id = "FIlterFreshEventList">
+                <div>
+                    <span>Показать события, которые .. </span>
+                </div>
+                <div>
+                    <span>Вообще есть</span>
+                    <input type="radio" name="FIlterFreshEventListRadioButtons" value="All" checked>
+                </div>
+                <div>
+                    <span>Уже прошли</span>
+                    <input type="radio" name="FIlterFreshEventListRadioButtons" value="past">
+                </div>
+                <div>
+                    <span>Идут в данный момент</span>
+                    <input type="radio" name="FIlterFreshEventListRadioButtons" value="now">
+                </div>
+                <div>
+                    <span>Будут идти</span>
+                    <input type="radio" name="FIlterFreshEventListRadioButtons" value="next">
+                </div>
+                <div>
+                    <span>В период с</span>
+                    <input type="date" id="startFilterEvent"></input>
+                    <span class = "TitleAddEvent">до</span>
+                    <input type="date" id="finishFilterEvent"></input>
+                    </div>
+            </div>
+            <div id = "FIlterFreshPeopleList">
+                <div>
+                    <span>Показать события, в которых .. </span>
+                </div>
+                <div>
+                    <span>Участвую я</span>
+                    <input type="checkbox" name="FIlterFreshPeopleListCheckBox" value="I"/>
+                    <div class = "TitleAddEvent">Участвуют мои друзья</div>
+                    <ol id = "FilterFriens">
+                        <li><input type="text"></input></li>
+                        <li><input type="text"></input></li>
+                        <li><input type="text"></input></li>
+                    </ol>
+                    <div>
+                    <input type="button" value="Добавить еще друга"></input>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id = "eventList">
-            <div>Инпут1</div>
-            <div>Инпут2</div>
-            <div>Инпут2</div>
-            <div>Инпут2</div>
-            <div>Инпут2</div>
-            <div>Инпут2</div>        
+            <div id =NumberColonShowList = "ColonTable" class = "ColonTable">
+                <div>№</div>
+                <div id=NumbersEventShowList>
+                    <div>
+                        <span>1</span>
+                    </div>
+                    <div>
+                        <span>2</span>
+                    </div>
+                    <div>
+                        <span>3</span>
+                    </div>
+                </div>
+            </div>
+            <div id =ColonLocShowList class = "ColonTable">
+                <div>Что</div>
+                <div id=LocShowList>
+                <div>
+                    <span>Уругвай, (10,45)</span>
+                </div>
+                <div>
+                    <span>Нижний Тагил, (11,49)</span>
+                </div>
+                </div>
+            </div>
+            <div id =ColonStarsShowList class = "ColonTable">
+                <div>Звездочки ^^</div>
+                <div id=StarsShowList>
+                <div>
+                    <span>****</span>
+                </div>
+                <div>
+                    <span>**</span>
+                </div>
+                <div>
+                    <span>*</span>
+                </div>
+                </div>
+            </div>
+            <div id =ColonDateShowList class = "ColonTable">
+                <div>Когда</div>
+                <div id=LocShowList>
+                <div>
+                    <span>1.10.12 - 10.11.13</span>
+                </div>
+                <div>
+                    <span>1.12.12 - 10.01.13</span>
+                </div>
+                <div>
+                    <span>1.1.12 - 10.5.12</span>
+                </div>
+                </div>
+            </div>
+            <div id =ColonCostShowList class = "ColonTable">
+                <div>Стоимость</div>
+                <div id=CostShowList>
+                <div>
+                    <span>Free!!!</span>
+                </div>
+                <div>
+                    <span>Очень дорого</span>
+                </div>
+                <div>
+                    <span>100500</span>
+                </div>
+                </div>
+            </div>
+            <div id =ColonfFriendsShowList class = "ColonTable">
+                <div>Участники</div>
+                <div id=FriendsShowList>
+                <div>
+                    <select>
+                        <option>text1</option>
+                        <option>text2</option>
+                        <option>text3</option>
+                        <option>text4</option>
+                        <option>text5</option>
+                     </select>
+                 </div>
+                <div>
+                <select>
+                    <option>text1</option>
+                    <option>text2</option>
+                    <option>text3</option>
+                    <option>text4</option>
+                    <option>text5</option>
+                </select>
+                </div>
+                <div>
+                <select>
+                    <option>text1</option>
+                    <option>text2</option>
+                    <option>text3</option>
+                    <option>text4</option>
+                    <option>text5</option>
+                </select>
+                </div>
+                </div>
+            </div>
     </div>
 </div>
 </body>

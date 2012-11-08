@@ -1,7 +1,6 @@
 *{
-    padding: 2;
 }
-#eventFactory {
+#ActionWithEventList {
     float: left;
     border:4px double black;
 }
@@ -15,5 +14,17 @@
 }
 
 #messageErrorAddInputs {
+    overflow: hidden;
+}
+
+.Error {
+    color: red;
+}
+
+.TitleAddEvent {
+    color: blue;
+}
+.ColonTable {
+    float: left;
     overflow: hidden;
 }
