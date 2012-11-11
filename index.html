@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="todo/assets/base.css">
+    <style>
+        #add-button {
+            width: 100%;
+            border-bottom: 1px solid #6C615C;
+            background: #8D7D77;
+            background: -webkit-gradient(linear, left top, left bottom, from(rgba(132, 110, 100, 0.8)),to(rgba(101, 84, 76, 0.8)));
+            background: -webkit-linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
+            background: -moz-linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
+            background: -o-linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
+            background: -ms-linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
+            background: linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
+            filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#9d8b83', EndColorStr='#847670');
+            border-top-left-radius: 1px;
+            border-top-right-radius: 1px;
+            border: double;
+            border-color: aliceBlue;
+            padding: 10px;
+        }
+        .events__item {
+            word-break: break-word;
+            padding: 15px;
+            margin-left: 45px;
+            display: block;
+            line-height: 1.2;
+            -webkit-transition: color 0.4s;
+            -moz-transition: color 0.4s;
+            -ms-transition: color 0.4s;
+            -o-transition: color 0.4s;
+            transition: color 0.4s;
+        }
+    </style>
+
+    <!-- script src="jquery-1.7.2.min.js"></script  -->
+    <script src="oop/underscore/underscore.js"></script>
+    <!-- script src="backbone.js"></script -->
+    <script src="oop/MyAbstractLayer.js"></script>
+    <script src="oop/Model.js"></script>
+    <script src="oop/Collection.js"></script>
+
+    <title>Yo!</title>
+</head>
+<body>
+
+<form>
+    <section id="todoapp">
+        <header id="header">
+            <h1>Events</h1>
+            <input id="new-todo" placeholder="What event?" autofocus=""/>
+
+            <div style="padding: 16px 16px 16px 60px; background: rgba(0, 0, 0, 0.02);">
+                <label>Start
+                    <input type="date" name="start"/>
+                </label>
+
+                <label style="float: right;">
+                    <input type="date" name="end"/>
+                    End
+                </label>
+                <br/>
+                <br/>
+
+                <input type="submit" value="Add event" id="add-button" />
+
+                <br/>
+                <br/>
+
+                <hr/>
+
+                <div class="filter">
+                    <label><input type="checkbox"/>Select future events</label>
+                    <label><input type="checkbox"/>Select my events</label>
+
+                    <div>Order by</div>
+                    <label><input type="radio" name="sort"/>Name</label>
+                    <label><input type="radio" name="sort"/>My</label>
+                    <label><input type="radio" name="sort"/>Start</label>
+                    <label><input type="radio" name="sort"/>End</label>
+                </div>
+
+
+            </div>
+        </header>
+        <section id="main">
+            <ul id="todo-list">
+                <li class="">
+                    <input class="toggle" type="checkbox">
+                    <div class="events__item">
+                        <div>Name: pewpew</div>
+                        <div>Start: 18.8.2005 12:00</div>
+                        <div>End: 18.8.2005 12:30</div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </section>
+    <br/>
+
+</form>
+
+<script src="index.js"></script>​
+</body>
+
+</html>
