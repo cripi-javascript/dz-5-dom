@@ -1,0 +1,36 @@
+.l-level{
+							width: 500px;
+						//	margin: 0 auto;
+							padding: 20px;
+							font: italic 14px Georgia;
+						 float: right;
+						}
+						.t-block{
+						 font-size: 1.3em;
+		     font-style: italic;
+						}
+							.meeting{ position: relative; width: 500px; padding: 10px;}
+							.meeting label {display: block; padding-bottom: 10px; overflow: hidden;}
+							.meeting .info {display: block; width: 494px; margin: 10px 0 10px 0;}
+							.meeting input { float: right;}
+							 .party label, .organize label{
+         padding-left: 30px; 
+         }	
+								.b-submit { width: 300px; margin: 10px 100px 10px 100px;}
+							.party {overflow: hidden;} 
+							.meeting select {margin: 0 10px;}
+		.l-spisok {
+		  	padding: 20px;
+				//	width: 200px;
+					float: left;
+		}					
+		.l-spisok form{
+		 padding-bottom: 10px;
+		}
+		.oneEvent, .oneEventCollection {
+		   margin-bottom: 10px;
+					 background-color: blue;
+						padding: 5px 10px;
+		   }  
+  .contekst {overflow:hidden; padding-top: 20px;}
+		.contekst label {display: block;}
