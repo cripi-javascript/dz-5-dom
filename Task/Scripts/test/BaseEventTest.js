@@ -5,6 +5,18 @@
 /*global initTestBase: true*/
 /*global Event: true*/
 module("test simple SQL");
+test('add()', function () {
+    "use strict";
+    var testBase = new BaseEvent([]), RealDate = Date, pastEventbase;
+    Date = function () {
+        return new RealDate("September 13, 2012 12:00:00");
+    };
+    testBase = testBase.add(new Event({"start": new Date(1),"end": new Date(2), "location":{"nameLocation":"123", "gps":{"x":1,"y":2}}}));
+    equal(testBase.items.length, 1);
+    ok(testBase instanceof BaseEvent);
+    ok(testBase instanceof Collection);
+    ok(true, true);
+});
 test('pastEventBase()', function () {
     "use strict";
     var testBase = initTestBase(), RealDate = Date, pastEventbase;
@@ -125,8 +137,9 @@ test('sortByStar()', function () {
     "use strict";
     var testBase = initTestBase(), sortByStarsEventbase = testBase.sortByStars();
     equal(testBase.items.length, sortByStarsEventbase.items.length);
-    ok(sortByStarsEventbase.items[0].stars === 5);
-    ok(sortByStarsEventbase.items[1].stars === 5);
+    ok(sortByStarsEventbase.items[0].id === 18);
+    ok(sortByStarsEventbase.items[1].id === 19);
+    ok(sortByStarsEventbase.items[2].id === 17);
 });
 test('sortByDate()', function () {
     "use strict";
@@ -187,59 +200,59 @@ function initTestBase() {
         programmerDay = new Event({"start": programmerDayDateStart, "end": programmerDayDateFinish, "name": 'День программмиста', "id": 16}),    
         knowDayDateStart = new Date("September 1, 2012 00:00:01"),
         knowDayDateDateFinish = new Date("September 1, 2012 23:59:59"),
-        knowDayDate = new Event({"start": knowDayDateStart, "end": knowDayDateDateFinish, "name": 'День знаний', "id": 17}),
+        knowDayDate = new Event({"start": knowDayDateStart, "end": knowDayDateDateFinish, "name": 'День знаний', "id": 17, "stars": 1}),
         teacherDayDateStart = new Date("October 5, 2012 00:00:00"),
         teacherDayDateFinish = new Date("October 5, 2012 23:59:59"),
-        teacherDay = new Event({"start": teacherDayDateStart, "end": teacherDayDateFinish, "name": 'День учителя', "id": 18}),
+        teacherDay = new Event({"start": teacherDayDateStart, "end": teacherDayDateFinish, "name": 'День учителя', "id": 18, "stars": 5}),
         securiteDayDateStart = new Date("November 5, 2012 00:00:00"),
         securiteDayDateFinish = new Date("November 5, 2012 23:59:59"),
-        securiteDay = new Event({"start": securiteDayDateStart, "end": securiteDayDateFinish, "name": 'День защиты информации', "id": 19}),
+        securiteDay = new Event({"start": securiteDayDateStart, "end": securiteDayDateFinish, "name": 'День защиты информации', "id": 19, "stars": 3}),
         nationUnitionDateStart = new Date("November 4, 2012 00:00:00"),
         nationUnitionDateDateFinish = new Date("November 4, 2012 23:59:59"),
         nationUnition = new Event({"start": nationUnitionDateStart, "end": nationUnitionDateDateFinish, "name": 'День нароного единства', "id": 20});
     bestOfSweets.setLocation({"gps": {
             "x": 15, "y": 189}, "name": "Австрия, Бургенланд - Айзенштадте, Фестиваль сладких вин"});
-    bestOfSweets.leaveMark(2);
+
     сirioDeNazare.setLocation({"gps": {
             "x": 45, "y": 133}, "name": "Бразилия, Белен, Фестиваль Cirio De Nazare"});
-    сirioDeNazare.leaveMark(1);
+
     vinesDay.setLocation({"gps": {
             "x": 45, "y": 133}, "name": "Венгрия, Мор, День вина"});
-    vinesDay.leaveMark(5);
+
     theBlackCountry.setLocation({"gps": {
             "x": 45, "y": 133}, "name": "Великобритания, Дадли, Вкус 'Черной страны'"});
-    theBlackCountry.leaveMark(3);
+
     oktoberFest.setLocation({"gps": {
             "x":  45, "y": 133}, "name": "Германия, Мюнхен, OktoberFest"});
-    oktoberFest.leaveMark(1);
+
     programmerDay.parties = [{name: "Pupkin"}, {"name": "Alex.IDontKnow"}];
     francfurtBook.setLocation({"gps": {
             x : 45, y : 133}, "name" : "Германия, Frankfurt, Франкфуртская международная книжная ярмарка"});
-    francfurtBook.leaveMark(1);
+
     aida.setLocation({"gps": {
             "x": 45, "y": 133}, "name": "Египет, ?, Аида у великих пирамид, Гиза"});
-    aida.leaveMark(3);
+
     paradeOfLove.setLocation({"gps": {
             "x":  45, "y": 133}, "name": "Израль, Тель-Авиве, Парад любви"});
-    paradeOfLove.leaveMark(1);
+
     sukkot.setLocation({"gps": {
             "x":  45, y : 133}, "name": "Израль, Иерусалиме, праздник Суккот"});
-    sukkot.leaveMark(4);
+
     fishFestival.setLocation({"gps": {
             "x":  45, "y": 133}, "name": "Испания, О Грове, Фестиваль рыбы"});
-    fishFestival.leaveMark(5);
+
     chocolateFestival.setLocation({"gps": {
             "x":  45, "y": 133}, "name": 'Италия, Перуджа, Фестиваль "Еврошоколад"'});
-    chocolateFestival.leaveMark(1);
+
     digitalArtFestival.setLocation({"gps": {
             "x":  45, "y": 133}, "name": "Австрия, Линц, Фестиваль Цифрового Исскуства"});
-    digitalArtFestival.leaveMark(3);
+
     fatherDays.setLocation({"gps": {
             "x":  45, "y": 133}, "name": "Бельгия, Антверпене, Дни наследия"});
-    fatherDays.leaveMark(4);
+
     bearWeekend.setLocation({"gps": {
             "x":  45, "y": 133}, "name": "Бельгия, Брюссель, Bear Weekends"});
-    bearWeekend.leaveMark(2);
+
     teaFestival.setLocation({"gps": {
             "x":  45, "y": 133}, "name": "Россия, Москва, Фестиваль чая"});
     programmerDay.setLocation({"gps" :{

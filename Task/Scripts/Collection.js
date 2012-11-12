@@ -19,15 +19,16 @@ Collection = function (otherItems) {
         }
     }
 };
+Collection.prototype.constructor = Collection
 Collection.prototype.add = function (obj) {
     "use strict";
     var newEvents = this.items.concat([obj]);
-    return new Collection(newEvents);
+    return new this.constructor(newEvents);
 };
 Collection.prototype.filter = function (selector) {
     "use strict";
     var newItems = this.items.filter(selector);
-    return new Collection(newItems);
+    return new this.constructor(newItems);
 };
 Collection.prototype.sortBy = function (comparator, isInvert) {
     "use strict";
@@ -46,5 +47,5 @@ Collection.prototype.sortBy = function (comparator, isInvert) {
     } else {
         newItems.sort();
     }
-    return new Collection(newItems);
+    return new this.constructor(newItems);
 };

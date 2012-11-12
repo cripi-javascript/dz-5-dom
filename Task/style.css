@@ -17,8 +17,13 @@
     overflow: hidden;
 }
 
-.Error {
+.ErrorActivateOff {
+    visibility:hidden
+}
+
+.ErrorActivateOn {
     color: red;
+    visibility:show
 }
 
 .TitleAddEvent {

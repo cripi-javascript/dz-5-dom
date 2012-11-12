@@ -3,7 +3,7 @@
 /**
  * Shell for "sql" operations with Array Events. 
  * @prototype {Collection}
- * @constructor
+ * @constructoro
  * @method {pastEventBase} - Создает BaseEvent с пропущенными событиями
  * @method {pastEventBase} - Создает BaseEvent с грядущими событиями
  * @method {nowEventBase}  -  Создает BaseEvent с текущими событиями
@@ -19,7 +19,6 @@
 function BaseEvent(events) {
     "use strict";
     Collection.call(this, events);
-    this.events = events;
 }
 BaseEvent.prototype = Object.create(Collection.prototype, {
     constructor: {
@@ -29,6 +28,7 @@ BaseEvent.prototype = Object.create(Collection.prototype, {
         configurable: true
     }
 });
+BaseEvent.prototype.constructor = BaseEvent;
 //пропущенные, текущие, будущие события 
 BaseEvent.prototype.pastEventBase = function () {
     "use strict";

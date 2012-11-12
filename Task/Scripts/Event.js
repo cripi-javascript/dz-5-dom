@@ -26,8 +26,8 @@ function Event(data) {
     this.parties = [];
     Model.call(this, data);
     this.validate(this);
-    this.setLocation(this.location);
-    this.leaveMark(this.stars);
+    this.setLocation(this.location.gps, this.location.nameLocation);
+    this.stars = this.leaveMark(this.stars);
 }
 Event.prototype = Object.create(Model.prototype, {
     constructor: {
@@ -67,7 +67,7 @@ Event.prototype.leaveMark = function (stars) {
         stars = 5;
     }
     stars = (stars - (stars % 1)); //обрезаем дробную часть
-    this.stars = stars;
+    return stars;
 };
 Event.prototype.validate = function (event) {
     "use strict";
@@ -87,3 +87,13 @@ Event.prototype.validate = function (event) {
         throw new Error("Даты начала и конца перепутаны");
     }
 };
+Event.prototype.locationToString = function() {
+    return this.location.nameLocation + ", (" + this.location.gps.x + ";" + this.location.gps.y + ")";
+}
+Event.prototype.starsToString= function() {
+    var res = "";
+    for(var i = 0; i < this.stars; i++) {
+        res += "*";
+    }
+    return res;
+}

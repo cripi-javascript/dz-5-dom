@@ -45,38 +45,35 @@ module("LeaveMark(number)");
 test('Передача не числа', function () {
     "use strict";
     var testEvent = new Event({});
-    testEvent.leaveMark("No number");
-    equal(testEvent.stars, 0, 'Если звездочку передали в виде не числа, то 0');
+    equal(testEvent.leaveMark("не число"), 0, 'Если звездочку передали в виде не числа, то 0');
 });
 test('Запуск без параметра', function () {
     "use strict";
     var testEvent = new Event({});
-    testEvent.leaveMark();
-    equal(testEvent.stars, 0, 'Если звездочку забыли объявить, то 0');
+    
+    equal(testEvent.leaveMark(), 0, 'Если звездочку забыли объявить, то 0');
 });
 test('Передача отрицательного числа', function () {
     "use strict";
     var testEvent = new Event({});
-    testEvent.leaveMark(-1);
-    equal(testEvent.stars, 0, 'Звездочка не может быть меньше 0');
+    equal(testEvent.leaveMark(-1), 0, 'Звездочка не может быть меньше 0');
 });
 test('Передача числа болешьшего 5', function () {
     "use strict";
     var testEvent = new Event({});
-    testEvent.leaveMark(6);
-    equal(testEvent.stars, 5, 'Звездочка не может быть больше 5');
+    
+    equal(testEvent.leaveMark(6), 5, 'Звездочка не может быть больше 5');
 });
 test('Передача корректного числа', function () {
     "use strict";
     var testEvent = new Event({});
-    testEvent.leaveMark(3);
-    equal(testEvent.stars, 3, '0-5 звездочка не изменяется, если целая');
+    
+    equal(testEvent.leaveMark(3), 3, '0-5 звездочка не изменяется, если целая');
 });
 test('Передача дробного числа', function () {
     "use strict";
     var testEvent = new Event({});
-    testEvent.leaveMark(3.124);
-    equal(testEvent.stars, 3, 'Звездочки - Int');
+    equal(testEvent.leaveMark(3.124), 3, 'Звездочки - Int');
 });
 
 module("SetLocation(location)");

@@ -15,6 +15,8 @@ var Model = function (data) {
         this[nameField] = data[nameField];
     }
 };
+Model.prototype.constructor = Model;
+
 Model.prototype.set = function (attributes) {
     "use strict";
     var nameAttr;
