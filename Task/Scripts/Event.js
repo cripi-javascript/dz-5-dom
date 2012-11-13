@@ -82,7 +82,7 @@ Event.prototype.leaveMark = function (stars) {
     if (stars > 5) {
         stars = 5;
     }
-    stars = (stars - (stars % 1)); //обрезаем дробную часть
+    stars = Math.floor(stars); 
     return stars;
 };
 /**
