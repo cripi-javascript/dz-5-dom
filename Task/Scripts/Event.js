@@ -54,7 +54,10 @@ Event.prototype.dateValidator = function (date) {
 */
 Event.prototype.setLocation = function (gps, name) {
     "use strict";
-    if (typeof gps !== "undefined"  && typeof gps.x !== "undefined" && typeof gps.y !== "undefined" && typeof name === "string") {
+    if (typeof gps !== "undefined" &&
+        typeof gps.x !== "undefined" &&
+        typeof gps.y !== "undefined" &&
+        typeof name === "string") {
         this.location.gps = gps;
         this.location.nameLocation = name;
     } else {
@@ -71,7 +74,9 @@ Event.prototype.setLocation = function (gps, name) {
 */
 Event.prototype.leaveMark = function (stars) {
     "use strict";
-    if (isNaN(parseFloat(stars)) || !isFinite(stars) || stars < 0) {
+    if (isNaN(parseFloat(stars)) ||
+        !isFinite(stars) ||
+        stars < 0) {
         stars = 0;
     }
     if (stars > 5) {

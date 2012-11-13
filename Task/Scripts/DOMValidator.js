@@ -8,7 +8,7 @@
 * @field {Function} isPositiveNumber - проверяет валидно ли поле содержащее целое положительное число
  */
 var DOMValidator = {
-    "isTimeInterval" : function  (divWithTimeInterval) {
+    "isTimeInterval": function (divWithTimeInterval) {
         var startDate = new Date(divWithTimeInterval.querySelector(".StartDate").value);
         var finishDate = new Date(divWithTimeInterval.querySelector(".FinishDate").value);
         var isDate = function (element) {
@@ -25,7 +25,7 @@ var DOMValidator = {
         }
         return "";
     },
-    "isCoordinate" : function (divWithCoordinates) {
+    "isCoordinate": function (divWithCoordinates) {
         var xCoordinate = divWithCoordinates.querySelector(".XCoordinate").value;
         var yCoordinate = divWithCoordinates.querySelector(".YCoordinate").value;
         var isNumeric = function(element) {
@@ -42,30 +42,29 @@ var DOMValidator = {
         }
         return "";
     },
-
-    "isImportantStringField" : function (divWithImportantStringField, minSize, maxSize) {
+    "isImportantStringField": function (divWithImportantStringField, minSize, maxSize) {
         minSize = minSize || 0;
         maxSize = maxSize || -1;
         if (minSize < 0) {
             minSize = 0;
         }
-        if (minSize> maxSize) {
+        if (minSize > maxSize) {
             maxSize = -1;
         }
         var importantStringField = divWithImportantStringField.querySelector(".ImportantStringField").value;
         if (maxSize != -1) {
             if (minSize > importantStringField.length || maxSize < importantStringField.length) {
-                return "Поле должно содержать от " + minSize + " до "+ maxSize + "символов";
+                return "Поле должно содержать от " + minSize + " до " + maxSize + "символов";
             }
         }
         else {
             if (minSize > importantStringField.length) {
-                return "Поле должно содержать как минимум "+minSize+" символов";
+                return "Поле должно содержать как минимум " + minSize + " символов";
             }
         }
         return "";
     },
-    "isStars" : function (divWithStarField) {
+    "isStars": function (divWithStarField) {
         var starsField = parseFloat(divWithStarField.querySelector(".StarsField").value);
         var isNumeric = function(element) {
             return !isNaN(parseFloat(element.value));
@@ -73,7 +72,7 @@ var DOMValidator = {
         if (isNaN(starsField)) {
             return "В поле введено не число";
         }
-        if (starsField < 0 || starsField>5) {
+        if (starsField < 0 || starsField > 5) {
             return "Количество звезд 0-5";
         }
         if (parseInt(starsField) !== starsField) {
@@ -81,8 +80,7 @@ var DOMValidator = {
         }
         return "";
     },
-
-    "isPositiveNumber" : function (divWithPositiveNumberField) {
+    "isPositiveNumber": function (divWithPositiveNumberField) {
         var positiveNumberField = divWithPositiveNumberField.querySelector(" .PositiveNumber").value;
         var isNumeric = function(element) {
             return !isNaN(parseFloat(element));

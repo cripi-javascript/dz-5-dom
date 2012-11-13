@@ -230,8 +230,10 @@ Calendary.prototype.updateFilter = function () {
         partyFilter;
     for (i = 0; i < filterRadios.length; i = i + 1) {
         radioButton = filterRadios[i];
-        if (radioButton.checked && radioButton.checked === true && radioButton.value != "None") {
-             var nameFunc = radioButton.value.toString();
+        if (radioButton.checked &&
+            radioButton.checked === true &&
+            radioButton.value != "None") {
+            var nameFunc = radioButton.value.toString();
             newFilters.push(function() {
                 return this[nameFunc]();
             });
