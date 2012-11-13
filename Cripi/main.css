@@ -5,12 +5,18 @@
 #createButton{padding: 10px 20px;
 			  background:#0CF;
 			  color:#FFF;}
-#tableOfEvents tr td.nodata {border:#FFF thin solid;
+/*#tableOfEvents {}*/			  
+#tableOfEvents tr td.nodata {border:#000 thin solid;
 							background:#FDD;
 							padding:5px;
 							}
-#tableOfEvents tr td{border:#FFF thin solid;
+#tableOfEvents tr td{border:#000 thin solid;
 				  background:#DFFFED;
+				  padding:5px;
+				  min-width:100px;
+				  max-width:250px;}
+#tableOfEvents tr th{border:#000 thin solid;
+				  background:#CFC;
 				  padding:5px;
 				  min-width:100px;
 				  max-width:250px;}

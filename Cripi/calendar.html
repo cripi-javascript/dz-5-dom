@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="main.css" type="text/css" rel="stylesheet" />
+<script src="events.js" type="text/javascript"></script>
 <title>События</title>
 </head>
 
@@ -12,23 +13,26 @@
 <div id="eventBuilder">
 <hr/>
 <h2>Создайте своё собственное событие</h2>
+<ul id="errors">
+<li>Написать валидацию формы</li>
+</ul>
 <table>
 <form name="constructor">
 	<tr>
 		<td>Название события</td>
-        <td><input type="text" name="call" id="call"></td>	
+        <td><input type="text" name="call" id="call" value=''></td>	
 	</tr>
     <tr>
 		<td>Дата начала</td>
-        <td><input type="date" name="dateStart" id="dateStart"></td>	
+        <td><input type="date" name="dateStart" id="dateStart" value=''></td>	
 	</tr>
     <tr>
 		<td>Дата окончания</td>
-        <td><input type="date" name="dateFinish" id="dateFinish"></td>	
+        <td><input type="date" name="dateFinish" id="dateFinish" value=''></td>	
 	</tr>
     <tr>
 		<td>Описание события</td>
-        <td><input type="text" name="description" id="description"></td>	
+        <td><input type="text" name="description" id="description" value=''></td>	
 	</tr>
     <tr>
 		<td>Предшествующие связанные события</td>
@@ -40,7 +44,7 @@
 	</tr>
     <tr>
 		<td>Участники события</td>
-        <td><input type="text" name="people" id="people"></td>	
+        <td><input type="text" name="people" id="people" value=''></td>	
 	</tr>
     <tr>
 		<td>Место проведения</td>
@@ -63,11 +67,10 @@
 	</tr>
     <tr>
 		<td>Внешняя ссылка</td>
-        <td><input type="text" name="Url" id="url"></td>	
+        <td><input type="text" name="Url" id="url" value=''></td>	
 	</tr>
     <tr>
     <td>
-    <!--<button  value="">Добавить событие</button>-->
     <div><p  id="createButton">Добавить событие</p></div>
     </td>
     </tr>
@@ -80,6 +83,7 @@
 <div id="eventsContainer">
 <hr/>
 <h2>Созданные события</h2>
+<p>Двойной щелчок по заголовку - сортировка по выбранному столбцу.</p>
 <table id="tableOfEvents"></table>
 </div>
 <!-- Конец таблицы -->
