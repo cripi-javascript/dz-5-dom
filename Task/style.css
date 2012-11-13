@@ -1,0 +1,35 @@
+*{
+}
+#ActionWithEventList {
+    float: left;
+    border:4px double black;
+}
+#eventList {
+    color: red;
+    overflow: hidden;
+    border:4px double black;
+}
+#AddInputs {
+    float: left;
+}
+
+#messageErrorAddInputs {
+    overflow: hidden;
+}
+
+.ErrorActivateOff {
+    visibility:hidden
+}
+
+.ErrorActivateOn {
+    color: red;
+    visibility:show
+}
+
+.TitleAddEvent {
+    color: blue;
+}
+.ColonTable {
+    float: left;
+    overflow: hidden;
+}
