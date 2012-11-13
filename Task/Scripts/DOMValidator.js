@@ -1,4 +1,13 @@
-﻿var Validator = {
+﻿/**
+    * 
+    * @namespace Пространство имен для DOM обработчиков ошибок
+    * @field {Function} isTimeInterval - проверяет валидно ли поле содержащее промежуток времени
+    * @field {Function} isCoordinate - проверяет валидно ли поле содержащая координаты двух мерного пространства
+    * @field {Function} isImportantStringField - проверяет валидно ли поле содержащая строку определенных размеров
+    * @field {Function} isStars - проверяет валидно ли поле содержащее рейтинг
+    * @field {Function} isPositiveNumber - проверяет валидно ли поле содержащее целое положительное число
+ */
+var DOMValidator = {
     "isTimeInterval" : function  (divWithTimeInterval) {
         var startDate = new Date(divWithTimeInterval.querySelector(".StartDate").value);
         var finishDate = new Date(divWithTimeInterval.querySelector(".FinishDate").value);

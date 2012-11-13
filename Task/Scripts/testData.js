@@ -1,4 +1,5 @@
-﻿function initTestBase() {
+﻿//Это "мясо" T_T
+function initTestBase() {
     "use strict";
     var bestOfSweetsDateStart = new Date("December 10, 2012 00:00:00"),
         bestOfSweetsDateFinish = new Date("December 14, 2012 23:59:59"),

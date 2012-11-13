@@ -1,13 +1,8 @@
 ﻿
 /**
- * Abstract class for Event
- *
- * @param {data} - start elements of collection
- * @field {items} - elements of collection
- * @method {get} - get value of field
- * @method {set} - set attributes
- * @method {validate} - validate <this>
- */
+    * @class Абстрактный класс объектов ООП
+    * @param {data} - копируемый объект
+*/
 var Model = function (data) {
     "use strict";
     var nameField;
@@ -15,8 +10,10 @@ var Model = function (data) {
         this[nameField] = data[nameField];
     }
 };
-Model.prototype.constructor = Model;
-
+/**
+    * @function setter
+    * @param {Object} - присваиваемый объект
+*/
 Model.prototype.set = function (attributes) {
     "use strict";
     var nameAttr;
@@ -28,6 +25,11 @@ Model.prototype.set = function (attributes) {
         }
     }
 };
+/**
+    * @function getter
+    * @param {String} имя поля
+    * @return {Object}
+*/
 Model.prototype.get = function (attribute) {
     "use strict";
     if (typeof attribute !== 'string' || typeof this[attribute] === "undefined") {
@@ -35,6 +37,9 @@ Model.prototype.get = function (attribute) {
     }
     return this[attribute];
 };
+/**
+    * @function Проверяющая коррекцию объекта
+*/
 Model.prototype.validate = function () {
     "use strict";
     throw new Error('this is Abstract method');

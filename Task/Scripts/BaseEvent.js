@@ -1,20 +1,9 @@
 ﻿/*global Collection: true*/
 
 /**
- * Shell for "sql" operations with Array Events. 
- * @prototype {Collection}
- * @constructoro
- * @method {pastEventBase} - Создает BaseEvent с пропущенными событиями
- * @method {pastEventBase} - Создает BaseEvent с грядущими событиями
- * @method {nowEventBase}  -  Создает BaseEvent с текущими событиями
- * @method {withFriend}  -  Создает BaseEvent с событиями, в которых принимал участие определенный человек
- * @method {getEventAfterDay}  -  Создает BaseEvent с грядущими событиями, которые наступят не раньше, чем через день
- * @method {getEventAfterWeek}  -  Создает BaseEvent с грядущими событиями, которые наступят не раньше, чем через неделю
- * @method {getEventAfterMonth}  -  Создает BaseEvent с грядущими событиями, которые наступят не раньше, чем через месяц
- * @method {getEventFromPeriod}  -  Создает BaseEvent с событиями, которые лежат между двумы датами [fromDate, toDate]
- * @method {getEventAfterMonth}  -  Создает BaseEvent с теми же событиями, но отсортированными по убыванию звезд
- * @method {getEventAfterMonth}  -  Создает BaseEvent с теми же событиями, но отсортироваными по возрастанию даты
- * @example - Смотри файл с тестами...
+    * Создает оболочку над массивом событий, предоставляющую "sql" подобные операции
+    * @class Оболочка над массивом событий.
+    * @augments Collection 
  */
 function BaseEvent(events) {
     "use strict";
@@ -28,8 +17,15 @@ BaseEvent.prototype = Object.create(Collection.prototype, {
         configurable: true
     }
 });
+/**
+    *@field {BaseEvent} - ссылка на "родной" конструктор
+*/
 BaseEvent.prototype.constructor = BaseEvent;
-//пропущенные, текущие, будущие события 
+
+/**
+    *@function Возвращает новую оболочку, но уже только с прошедшими событиями
+    *@return {BaseEvent}
+*/
 BaseEvent.prototype.pastEventBase = function () {
     "use strict";
     var currentDate = new Date();
@@ -37,6 +33,9 @@ BaseEvent.prototype.pastEventBase = function () {
         return event.end.getTime() < currentDate.getTime();
     });
 };
+/**
+    *@function Возвращает новую оболочку, но уже только с ненаступившими событиями
+*/
 BaseEvent.prototype.nextEventBase = function () {
     "use strict";
     var currentDate = new Date();
@@ -44,6 +43,9 @@ BaseEvent.prototype.nextEventBase = function () {
         return event.start.getTime() > currentDate.getTime();
     });
 };
+/**
+    *@function Возвращает новую оболочку, но уже с событиями, которые идут в данный момент
+*/
 BaseEvent.prototype.nowEventBase = function () {
     "use strict";
     var currentDate = new Date();
@@ -51,7 +53,10 @@ BaseEvent.prototype.nowEventBase = function () {
         return (event.start.getTime() <= currentDate.getTime() && event.end.getTime() >= currentDate.getTime());
     });
 };
-//событие с участием друга (Друг отношение рефлексивное ^^)
+
+/**
+    *@function Возвращает новую оболочку, но уже с событиями, в которых участвует определенный человек
+*/
 BaseEvent.prototype.withFriend = function (myFriend) {
     "use strict";
     return this.filter(function (event) {
@@ -60,7 +65,9 @@ BaseEvent.prototype.withFriend = function (myFriend) {
         });
     });
 };
-// События через период времени день, неделя, месяц
+/**
+    *@function Возвращает новую оболочку, но уже с событиями, которые будут через неделю
+*/
 BaseEvent.prototype.getEventAfterWeek = function () {
     "use strict";
     var currentDate = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
@@ -68,6 +75,9 @@ BaseEvent.prototype.getEventAfterWeek = function () {
         return event.start.getTime() > currentDate.getTime();
     });
 };
+/**
+    *@function Возвращает новую оболочку, но уже с событиями, которые будут через день
+*/
 BaseEvent.prototype.getEventAfterDay = function () {
     "use strict";
     var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
@@ -75,6 +85,9 @@ BaseEvent.prototype.getEventAfterDay = function () {
         return event.start.getTime() > currentDate.getTime();
     });
 };
+/**
+    *@function Возвращает новую оболочку, но уже с событиями, которые будут через месяц
+*/
 BaseEvent.prototype.getEventAfterMonth = function () {
     "use strict";
     var currentDate = new Date();
@@ -87,13 +100,20 @@ BaseEvent.prototype.getEventAfterMonth = function () {
         return event.start.getTime() > currentDate.getTime();
     });
 };
-// События за период
+/**
+    *@function Возвращает новую оболочку, но уже с событиями, которые будут в определенный период
+    *@param {Date} fromDate - начала периода
+    *@param {Date} toDate - конец периода
+*/
 BaseEvent.prototype.getEventFromPeriod = function (fromDate, toDate) {
     "use strict";
     return this.filter(function (event) {
         return (event.start.getTime() > fromDate.getTime() && event.end.getTime() < toDate.getTime());
     });
 };
+/**
+    *@function Возвращает новую оболочку c теми же событиями, но отсортированными по уменьшению количества звезд
+*/
 BaseEvent.prototype.sortByStars = function (ascending) {
     "use strict";
     var comparer = function compare(a, b) {
@@ -107,6 +127,9 @@ BaseEvent.prototype.sortByStars = function (ascending) {
     };
     return this.sortBy(comparer, ascending);
 };
+/**
+    *@function Возвращает новую оболочку c теми же событиями, но отсортированными по дате
+*/
 BaseEvent.prototype.sortByDate = function (ascending) {
     "use strict";
     var comparer = function compare(a, b) {
