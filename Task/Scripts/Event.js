@@ -1,12 +1,13 @@
 ﻿/*global Model: true*/
 /**
-    * Создает новое событие в календаре
-    * @class Событие в календаре
-    * @field {Number} - id Индификационный номер объекта по идее тут должен быть GUID
-    * @field {Object} - location объект содержащий локационные данные о событии + название события
-    * @field {Number} - реитинг
-    * @field {Number} - Цена посещения
-    * @augments Model 
+ * Создает новое событие в календаре
+ * @class Событие в календаре
+ * @augments Model 
+ *
+ * @field {Number} - id Индификационный номер объекта по идее тут должен быть GUID
+ * @field {Object} - location объект содержащий локационные данные о событии + название события
+ * @field {Number} - реитинг
+ * @field {Number} - Цена посещения
 */
 function Event(data) {
     "use strict";
@@ -32,8 +33,9 @@ Event.prototype = Object.create(Model.prototype, {
     }
 });
 /**
-    * @function Функция, проверяющая корректность даты
-    * @return {bool}
+ * @function Функция, проверяющая корректность даты
+ *
+ * @return {bool}
 */
 Event.prototype.dateValidator = function (date) {
     "use strict";
@@ -45,9 +47,10 @@ Event.prototype.dateValidator = function (date) {
     return false;
 };
 /**
-    * @function set-ер установления локации события
-    * @field gps координаты в дву мерном пространстве
-    * @field название события
+ * @function set-ер установления локации события
+ *
+ * @field gps координаты в дву мерном пространстве
+ * @field название события
 */
 Event.prototype.setLocation = function (gps, name) {
     "use strict";
@@ -62,8 +65,9 @@ Event.prototype.setLocation = function (gps, name) {
     }
 };
 /**
-    * @function Коррекция значения рейтинга
-    * @return {Number} 0,1,2,3,4,5
+ * @function Коррекция значения рейтинга
+ *
+ * @return {Number} 0,1,2,3,4,5
 */
 Event.prototype.leaveMark = function (stars) {
     "use strict";
@@ -77,8 +81,9 @@ Event.prototype.leaveMark = function (stars) {
     return stars;
 };
 /**
-    * @function Проверяет объект на корректность
-    * @field {Event} event - то что проверяем
+ * @function Проверяет объект на корректность
+ *
+ * @field {Event} event - то что проверяем
 */
 Event.prototype.validate = function (event) {
     "use strict";
@@ -99,15 +104,17 @@ Event.prototype.validate = function (event) {
     }
 };
 /**
-    * @function Функция, печатающие значение локационных данных объекта
-    * @return {String} [location], (x, y) 
+ * @function Функция, печатающие значение локационных данных объекта
+ *
+ * @return {String} [location], (x, y) 
 */
 Event.prototype.locationToString = function() {
     return this.location.nameLocation + ", (" + this.location.gps.x + ";" + this.location.gps.y + ")";
 }
 /**
-    * @function Функция, печатающие значение рейтинга в звездочках
-    * @return {String} ,*,**,***,****,*****
+ * @function Функция, печатающие значение рейтинга в звездочках
+ *
+ * @return {String} ,*,**,***,****,*****
 */
 Event.prototype.starsToString= function() {
     var res = "";

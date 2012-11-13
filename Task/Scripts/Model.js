@@ -1,7 +1,8 @@
 ﻿
 /**
-    * @class Абстрактный класс объектов ООП
-    * @param {data} - копируемый объект
+ * @class Абстрактный класс объектов ООП
+ *
+ * @param {data} - копируемый объект
 */
 var Model = function (data) {
     "use strict";
@@ -11,8 +12,9 @@ var Model = function (data) {
     }
 };
 /**
-    * @function setter
-    * @param {Object} - присваиваемый объект
+ * @function setter
+ *
+ * @param {Object} - присваиваемый объект
 */
 Model.prototype.set = function (attributes) {
     "use strict";
@@ -26,9 +28,11 @@ Model.prototype.set = function (attributes) {
     }
 };
 /**
-    * @function getter
-    * @param {String} имя поля
-    * @return {Object}
+ * @function getter
+ *
+ * @param {String} имя поля
+ *
+ * @return {Object}
 */
 Model.prototype.get = function (attribute) {
     "use strict";
@@ -38,7 +42,7 @@ Model.prototype.get = function (attribute) {
     return this[attribute];
 };
 /**
-    * @function Проверяющая коррекцию объекта
+ * @function Проверяющая коррекцию объекта
 */
 Model.prototype.validate = function () {
     "use strict";

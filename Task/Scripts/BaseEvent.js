@@ -1,9 +1,10 @@
 ﻿/*global Collection: true*/
 
 /**
-    * Создает оболочку над массивом событий, предоставляющую "sql" подобные операции
-    * @class Оболочка над массивом событий.
-    * @augments Collection 
+ * Создает оболочку над массивом событий, предоставляющую "sql" подобные операции
+ *
+ * @class Оболочка над массивом событий.
+ * @augments Collection 
  */
 function BaseEvent(events) {
     "use strict";
@@ -18,13 +19,15 @@ BaseEvent.prototype = Object.create(Collection.prototype, {
     }
 });
 /**
-    *@field {BaseEvent} - ссылка на "родной" конструктор
+ *
+ *@field {BaseEvent} - ссылка на "родной" конструктор
 */
 BaseEvent.prototype.constructor = BaseEvent;
 
 /**
-    *@function Возвращает новую оболочку, но уже только с прошедшими событиями
-    *@return {BaseEvent}
+ *@function Возвращает новую оболочку, но уже только с прошедшими событиями
+ *
+ *@return {BaseEvent}
 */
 BaseEvent.prototype.pastEventBase = function () {
     "use strict";
@@ -34,7 +37,9 @@ BaseEvent.prototype.pastEventBase = function () {
     });
 };
 /**
-    *@function Возвращает новую оболочку, но уже только с ненаступившими событиями
+ * @function Возвращает новую оболочку, но уже только с ненаступившими событиями
+ *
+ * @return {BaseEvent}
 */
 BaseEvent.prototype.nextEventBase = function () {
     "use strict";
@@ -44,7 +49,9 @@ BaseEvent.prototype.nextEventBase = function () {
     });
 };
 /**
-    *@function Возвращает новую оболочку, но уже с событиями, которые идут в данный момент
+ * @function Возвращает новую оболочку, но уже с событиями, которые идут в данный момент
+ *
+ * @return
 */
 BaseEvent.prototype.nowEventBase = function () {
     "use strict";
@@ -55,8 +62,10 @@ BaseEvent.prototype.nowEventBase = function () {
 };
 
 /**
-    *@function Возвращает новую оболочку, но уже с событиями, в которых участвует определенный человек
-*/
+ * @function Возвращает новую оболочку, но уже с событиями, в которых участвует определенный человек
+ *
+ * @return
+ */
 BaseEvent.prototype.withFriend = function (myFriend) {
     "use strict";
     return this.filter(function (event) {
@@ -66,7 +75,9 @@ BaseEvent.prototype.withFriend = function (myFriend) {
     });
 };
 /**
-    *@function Возвращает новую оболочку, но уже с событиями, которые будут через неделю
+ * @function Возвращает новую оболочку, но уже с событиями, которые будут через неделю
+ *
+ * @return {BaseEvent}
 */
 BaseEvent.prototype.getEventAfterWeek = function () {
     "use strict";
@@ -76,7 +87,9 @@ BaseEvent.prototype.getEventAfterWeek = function () {
     });
 };
 /**
-    *@function Возвращает новую оболочку, но уже с событиями, которые будут через день
+ * @function Возвращает новую оболочку, но уже с событиями, которые будут через день
+ *
+ * @return {BaseEvent}
 */
 BaseEvent.prototype.getEventAfterDay = function () {
     "use strict";
@@ -86,7 +99,9 @@ BaseEvent.prototype.getEventAfterDay = function () {
     });
 };
 /**
-    *@function Возвращает новую оболочку, но уже с событиями, которые будут через месяц
+ * @function Возвращает новую оболочку, но уже с событиями, которые будут через месяц
+ *
+ * @return {BaseEvent}
 */
 BaseEvent.prototype.getEventAfterMonth = function () {
     "use strict";
@@ -101,9 +116,12 @@ BaseEvent.prototype.getEventAfterMonth = function () {
     });
 };
 /**
-    *@function Возвращает новую оболочку, но уже с событиями, которые будут в определенный период
-    *@param {Date} fromDate - начала периода
-    *@param {Date} toDate - конец периода
+ * @function Возвращает новую оболочку, но уже с событиями, которые будут в определенный период
+ *
+ * @param {Date} fromDate - начала периода
+ * @param {Date} toDate - конец периода
+ *
+ * @return
 */
 BaseEvent.prototype.getEventFromPeriod = function (fromDate, toDate) {
     "use strict";
@@ -112,7 +130,9 @@ BaseEvent.prototype.getEventFromPeriod = function (fromDate, toDate) {
     });
 };
 /**
-    *@function Возвращает новую оболочку c теми же событиями, но отсортированными по уменьшению количества звезд
+ * @function Возвращает новую оболочку c теми же событиями, но отсортированными по уменьшению количества звезд
+ *
+ * @return {BaseEvent}
 */
 BaseEvent.prototype.sortByStars = function (ascending) {
     "use strict";
@@ -128,8 +148,10 @@ BaseEvent.prototype.sortByStars = function (ascending) {
     return this.sortBy(comparer, ascending);
 };
 /**
-    *@function Возвращает новую оболочку c теми же событиями, но отсортированными по дате
-*/
+ * @function Возвращает новую оболочку c теми же событиями, но отсортированными по дате
+ *
+ * @return {BaseEvent}
+ */
 BaseEvent.prototype.sortByDate = function (ascending) {
     "use strict";
     var comparer = function compare(a, b) {

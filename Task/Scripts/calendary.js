@@ -2,13 +2,13 @@
 /*global initTestBase: true*/
 /*global CalendaryErrorManager: true*/
 /**
-    * 
-    * @namespace Пространство имен для календаря
-    * @field {EventFactory}  объект, хранящий ссылки на inputы необходимые для создания нового события 
-    * @field eventList  ссылка на дом объект, хранящий список событий
-    * @field eventBase все события пользователя
-    * @field errorManager объект хранящий функции для валидации полей в дом и хранящий в себе некоторые тривиальные операции
-    * @field currentFilters фильтры наложенные на текущие события
+ * @namespace Пространство имен для календаря
+ *
+ * @field {EventFactory}  объект, хранящий ссылки на inputы необходимые для создания нового события 
+ * @field eventList  ссылка на дом объект, хранящий список событий
+ * @field eventBase все события пользователя
+ * @field errorManager объект хранящий функции для валидации полей в дом и хранящий в себе некоторые тривиальные операции
+ * @field currentFilters фильтры наложенные на текущие события
  */
 function Calendary() {
     "use strict";
@@ -27,9 +27,11 @@ function Calendary() {
     this.currentFilters = [];
 }
 /**
-    * @function - функция, возвращающая текущую базу событий, но с наложенными фильтрами
-    * @param {[Function]} фильтры в виде функции
-    * @return {BaseEvent}
+ * @function - функция, возвращающая текущую базу событий, но с наложенными фильтрами
+ *
+ * @param {[Function]} фильтры в виде функции
+ *
+ * @return {BaseEvent}
 */
 Calendary.prototype.ApplyFilter = function (filters) {
     "use strict";
@@ -41,9 +43,8 @@ Calendary.prototype.ApplyFilter = function (filters) {
     return base;
 }
 /**
-    * @function - функция пытается создать событие из данных с формы
+ * @function - функция пытается создать событие из данных с формы
 */
-
 Calendary.prototype.CreateEvent = function () {
     "use strict";
     var parties = [],
@@ -87,14 +88,14 @@ Calendary.prototype.CreateEvent = function () {
         "end": new Date(this.EventFactory.timer.querySelector(".FinishDate").value),
         "parties" : parties
     }
-    if (Validator.isCoordinate(this.EventFactory.coordinate)) {
+    if (DOMValidator.isCoordinate(this.EventFactory.coordinate)) {
         eventDate.location.gps.x = 0;
         eventDate.location.gps.y = 0;
     }
-    if (Validator.isStars(this.EventFactory.stars)) {
+    if (DOMValidator.isStars(this.EventFactory.stars)) {
         eventDate.stars = 0;
     }
-    if (Validator.isPositiveNumber(this.EventFactory.cost)) {
+    if (DOMValidator.isPositiveNumber(this.EventFactory.cost)) {
         eventDate.cost = 0;
     }
     this.eventBase = this.eventBase.add(new Event(eventDate));
@@ -120,8 +121,7 @@ Calendary.prototype.CreateEvent = function () {
     this.EventFactory.parties.appendChild(docfrag);
 }
 /**
-    * @private 
-    * @function - функция обновляет отфильтрованный список со всеми наложенными фильтрами
+ * @function - функция обновляет отфильтрованный список со всеми наложенными фильтрами
 */
 Calendary.prototype.UpdateShowList = function () {
     "use strict";
@@ -170,7 +170,7 @@ Calendary.prototype.UpdateShowList = function () {
     this.eventList.appendChild(newEventList);
 }
 /**
-    * @function функция вызывает обработчики ошибок необходимых полей
+ * @function функция вызывает обработчики ошибок необходимых полей
 */
 Calendary.prototype.changeNeed = function () {
     "use strict";
@@ -178,7 +178,7 @@ Calendary.prototype.changeNeed = function () {
     this.errorManager.changeImportantStringField(this.EventFactory.nameLocation);
 }
 /**
-    * @function функция вызывает обработчики ошибок необязательных полей
+ * @function функция вызывает обработчики ошибок необязательных полей
 */
 Calendary.prototype.changeAddition = function () {
     "use strict";
@@ -187,25 +187,25 @@ Calendary.prototype.changeAddition = function () {
     this.errorManager.changeStars(this.EventFactory.stars);
 }
 /**
-    * @function функция проверяет корректность необходимых полей
+ * @function функция проверяет корректность необходимых полей
 */
 Calendary.prototype.isCorrecteNeedFields = function () {
     "use strict";
-    return Validator.isTimeInterval(this.EventFactory.timer) === "" && 
-        Validator.isImportantStringField(this.EventFactory.nameLocation) === ""; 
+    return DOMValidator.isTimeInterval(this.EventFactory.timer) === "" && 
+        DOMValidator.isImportantStringField(this.EventFactory.nameLocation) === ""; 
 }
 /**
-    * @function функция проверяет корректность дополнительных полей
+ * @function функция проверяет корректность дополнительных полей
 */
 Calendary.prototype.isCorrecteAdditionFields = function () {
     "use strict";
-    return Validator.isCoordinate(this.EventFactory.coordinate) === "" &&
-        Validator.isStars(this.EventFactory.stars) === "" &&
-        Validator.isPositiveNumber(this.EventFactory.cost) === "";
+    return DOMValidator.isCoordinate(this.EventFactory.coordinate) === "" &&
+        DOMValidator.isStars(this.EventFactory.stars) === "" &&
+        DOMValidator.isPositiveNumber(this.EventFactory.cost) === "";
 }
 /**
-    * @function функция добавляет дополнительное поле в коллекцию друзей
-    * @param {DIVdomElement} хранилище коллекции друзей
+ * @function функция добавляет дополнительное поле в коллекцию друзей
+ * @param {DIVdomElement} хранилище коллекции друзей
 */
 Calendary.prototype.addFriend = function (li) {
     "use strict";
@@ -216,7 +216,7 @@ Calendary.prototype.addFriend = function (li) {
     li.appendChild(newParty);
 }
 /**
-    * @function функция, обновляющая данные фильтра из DOM
+ * @function функция, обновляющая данные фильтра из DOM
 */
 Calendary.prototype.updateFilter = function () {
     "use strict";

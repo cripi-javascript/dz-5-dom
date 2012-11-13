@@ -1,9 +1,10 @@
 ﻿/*global Collection: true*/
 
 /**
-    * Создает оболочка для хранения массива объектов с операциями по извлечению более конкретных элементов
-    * @class Оболочка для храения массива объектов
-    * @param {Array} элементы коллекции
+ * Создает оболочка для хранения массива объектов с операциями по извлечению более конкретных элементов
+ * @class Оболочка для храения массива объектов
+ *
+ * @param {Array} элементы коллекции
 */
 var Collection = function (otherItems) {
     "use strict";
@@ -16,22 +17,25 @@ var Collection = function (otherItems) {
     }
 };
 /**
-    * @field {Collection} хранит ссылку на родной конструктор
- */
+ * @field {Collection} хранит ссылку на родной конструктор
+*/
 Collection.prototype.constructor = Collection
 /**
-    * @function создает новую коллекцию элементов с теме же элементами + с новым элементом obj
-    * @return {instanceof this.constructor}
- */
+ * @function создает новую коллекцию элементов с теме же элементами + с новым элементом obj
+ *
+ * @return {instanceof this.constructor}
+*/
 Collection.prototype.add = function (obj) {
     "use strict";
     var newEvents = this.items.concat([obj]);
     return new this.constructor(newEvents);
 };
 /**
-    * @function создает новую коллекцию элементов с отфильтрованными элементами
-    * @param {Function} - делегат
-    * @return {instanceof this.constructor}
+ * @function создает новую коллекцию элементов с отфильтрованными элементами
+ *
+ * @param {Function} - делегат
+ *
+ * @return {instanceof this.constructor}
 */
 Collection.prototype.filter = function (selector) {
     "use strict";
@@ -39,11 +43,13 @@ Collection.prototype.filter = function (selector) {
     return new this.constructor(newItems);
 };
 /**
-    * @function создает новую коллекцию элементов с теме же элементами + с новым элементом obj
-    * @param {Function} - компаратор
-    * @param {Function} - инвертировать, ли результат
-    * @return {instanceof this.constructor}
- */
+* @function создает новую коллекцию элементов с теме же элементами + с новым элементом obj
+ *
+ * @param {Function} - компаратор
+ * @param {Function} - инвертировать, ли результат
+ *
+ * @return {instanceof this.constructor}
+*/
 Collection.prototype.sortBy = function (comparator, isInvert) {
     "use strict";
     var newItems = [].concat(this.items);
