@@ -35,7 +35,7 @@ Calendary.prototype.ApplyFilter = function (filters) {
     "use strict";
     var base = this.eventBase,
         i;
-    for (i = 0; i < filters.length; i += 1) {
+    for (i = 0; i < filters.length; i = i + 1) {
         base = filters[i].call(base);
     }
     return base;
@@ -67,7 +67,7 @@ Calendary.prototype.CreateEvent = function () {
         }
     }
     partyList = this.EventFactory.parties.querySelectorAll(" input");
-    for ( i = 0; i < partyList.length; i += 1) {
+    for ( i = 0; i < partyList.length; i = i + 1) {
         if (partyList[i].value && partyList[i].value !== "") {
             parties.push({"name" : partyList[i].value});
         }
@@ -99,13 +99,13 @@ Calendary.prototype.CreateEvent = function () {
     }
     this.eventBase = this.eventBase.add(new Event(eventDate));
     inputs = document.querySelectorAll('#eventFactory input');
-    for (i = 0; i < inputs.length; i += 1) {
+    for (i = 0; i < inputs.length; i = i + 1) {
         if (inputs[i].type === "text" || inputs[i].type === "date") {
             inputs[i].value = "";
         }
     }
     errors = document.querySelectorAll('#eventFactory .Error');
-    for (i = 0; i < errors.length; i += 1) {
+    for (i = 0; i < errors.length; i = i + 1) {
         document.remove(errors);
     }
     this.errorManager.removeAllChildren(this.EventFactory.parties);
@@ -114,7 +114,7 @@ Calendary.prototype.CreateEvent = function () {
     input = document.createElement("input");
     input.type = "text";
     io.appendChild(input);
-    for (i = 0; i < 3; i += 1) {
+    for (i = 0; i < 3; i = i + 1) {
         docfrag.appendChild(io.cloneNode(true));
     }
     this.EventFactory.parties.appendChild(docfrag);
@@ -130,14 +130,15 @@ Calendary.prototype.UpdateShowList = function () {
             var rowTable = document.createElement("tr"),
                 cellTable = document.createElement("td"),
                 i;
-            for (i = 0; i < 7; i += 1) {
+            for (i = 0; i < 7; i = i + 1) {
                 rowTable.appendChild(cellTable.cloneNode(false));
             }
             return rowTable;
         }()),
             listParty,
             n,
-            aDOMParty;
+            aDOMParty,
+            i;
         row.children[0].appendChild(document.createTextNode(number));
         row.children[1].appendChild(document.createTextNode(event.locationToString()));
         row.children[2].appendChild(document.createTextNode(event.starsToString()));
@@ -147,7 +148,7 @@ Calendary.prototype.UpdateShowList = function () {
         listParty = document.createElement("select");
         for (i = 0; i < event.parties.length; i += 1) {
             aDOMParty = document.createElement("option");
-            aDOMParty.appendChild(document.createTextNode(event.parties[n].name));
+            aDOMParty.appendChild(document.createTextNode(event.parties[i].name));
             listParty.appendChild(aDOMParty);
         }
         if (event.parties.length) {
@@ -162,7 +163,7 @@ Calendary.prototype.UpdateShowList = function () {
     this.errorManager.removeAllChildren(this.eventList);
     newEventList = document.createDocumentFragment();
     currentBase = this.ApplyFilter(this.currentFilters);
-    for (i = 0; i < currentBase.items.length; i += 1) {
+    for (i = 0; i < currentBase.items.length; i = i + 1) {
         event = currentBase.items[i];
         newEventList.appendChild(createEventRow(i + 1, event));
     }
@@ -227,25 +228,25 @@ Calendary.prototype.updateFilter = function () {
         partys,
         nonEmptyParty,
         partyFilter;
-    for (i = 0; i < filterRadios.length; i += 1) {
+    for (i = 0; i < filterRadios.length; i = i + 1) {
         radioButton = filterRadios[i];
         if (radioButton.checked && radioButton.checked === true && radioButton.value != "None") {
-            // var nameFunc = radioButton.value.toString();
+             var nameFunc = radioButton.value.toString();
             newFilters.push(function() {
-                return this[radioButton.value.toString()]();
+                return this[nameFunc]();
             });
         }
     }
     partys = document.querySelectorAll("#FilterFriens input");
     nonEmptyParty = [];
-    for (i = 0; i < partys.length; i += 1) {
+    for (i = 0; i < partys.length; i = i + 1) {
         if (partys[i].value != "") {
             nonEmptyParty.push(partys[i].value);
         }
     }
     partyFilter = function() {
         var base = this, i
-        for (i = 0; i < nonEmptyParty.length; i += 1) {
+        for (i = 0; i < nonEmptyParty.length; i = i + 1) {
             base = base.withFriend({
                 "name": nonEmptyParty[i]
             });

@@ -8,7 +8,7 @@
  */
 function setInt(){
     var calendary = new Calendary();
-    calendary.UpdateShowList();
+   calendary.UpdateShowList();
     calendary.EventFactory.timer.addEventListener('blur', function() {
         calendary.errorManager.changeTime(this);
     }, true);
@@ -32,7 +32,7 @@ function setInt(){
         calendary.addFriend(calendary.EventFactory.parties);
     }, false);
     var filterRadios =document.querySelectorAll("#FilterEventList input[type = radio]");
-    for(var i = 0; i < filterRadios.length; i += 1) {
+    for(var i = 0; i < filterRadios.length; i = i + 1) {
         filterRadios[i].addEventListener('click', function() {
             calendary.updateFilter();
             calendary.UpdateShowList();
