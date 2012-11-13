@@ -122,9 +122,5 @@ Event.prototype.locationToString = function() {
  * @return {String} ,*,**,***,****,*****
 */
 Event.prototype.starsToString= function() {
-    var res = "";
-    for(var i = 0; i < this.stars; i++) {
-        res += "*";
-    }
-    return res;
+    return return new Array(this.stars + 1).join('*');;
 }
