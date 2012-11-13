@@ -1,12 +1,9 @@
-
 /**
- * Creates an instance of Event.
+ * установим обработчики событий
  *
  * @author Alex.Mangin
- *
- * @function This is the main function
  */
-function setInt(){
+(function (){
     var calendary = new Calendary();
    calendary.UpdateShowList();
     calendary.EventFactory.timer.addEventListener('blur', function() {
@@ -42,4 +39,4 @@ function setInt(){
         calendary.updateFilter();
         calendary.UpdateShowList();
     }, true);
-}
+}());
