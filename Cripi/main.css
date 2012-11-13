@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+
+#username {border-bottom:dotted thin;}
+#createButton{padding: 10px 20px;
+			  background:#0CF;
+			  color:#FFF;}
+/*#tableOfEvents {}*/			  
+#tableOfEvents tr td.nodata {border:#000 thin solid;
+							background:#FDD;
+							padding:5px;
+							}
+#tableOfEvents tr td{border:#000 thin solid;
+				  background:#DFFFED;
+				  padding:5px;
+				  min-width:100px;
+				  max-width:250px;}
+#tableOfEvents tr th{border:#000 thin solid;
+				  background:#CFC;
+				  padding:5px;
+				  min-width:100px;
+				  max-width:250px;}
+
