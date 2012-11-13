@@ -98,10 +98,10 @@ Event.prototype.validate = function (event) {
     if (!Array.isArray(event.parties)) {
         throw new Error("Участники - это массив");
     }
-    if (event.parties.some(function (party) {
-            return !party.name;
-        })
-            ) {
+    var existsSomePartyWithoutNameField = event.parties.some(function (party) {
+        return !party.name;
+    });
+    if (existsSomePartyWithoutNameField) {
         throw new Error("У одного из участников нет поля <ИМЯ>");
     }
     if (event.end < event.start) {
