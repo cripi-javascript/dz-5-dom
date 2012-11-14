@@ -1,0 +1,76 @@
+﻿﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Календарь</title>
+	<link rel="stylesheet" type="text/css" href="choose.css">
+	<script type="text/javascript" src="Model.js"></script>
+    <script type="text/javascript" src="Collection.js"></script>
+    <script type="text/javascript" src="Event.js"></script>
+    <script type="text/javascript" src="Events.js"></script>
+    <script type="text/javascript" src="CreateCalendar.js"></script>
+</head>
+
+<body>
+<div>
+	<h3>Фильтрация текущей коллекции </h3>
+	<div>
+        <label><input type="checkbox" class="filter1"/>Выбрать последущие события</label>
+        <label><input type="checkbox" class="filter2"/>Выбрать предыдущие события</label>
+        <div>Сортировать по</div>
+        <label><input type="radio" name = "sort" value = "start"/>Началу</label>
+        <label><input type="radio" name = "sort" value = "length"/>Длительности</label>
+        <label><input type="radio" name = "sort" value = "rating"/>Рейтингу</label>    
+    </div>
+</div>
+<hr/>
+<form name = "Создание события">
+    
+    <label>Название события
+        <input type="text" value="Новое событие" name = "Новое событие" autofocus/>
+    </label>
+    <br>
+    <label>Дата начала:
+        <input type="date" name = "Дата начала"/>
+	</label>
+	<br>
+	<label>Время начала:
+		<input type="time" name = "Время начала" />
+    </label>
+    <br>
+    <label>Дата окончания:
+        <input type="date" name = "Дата окончания" />
+	</label>
+	<br>
+	<label>Время окончания:
+		<input type="time" name = "Время окончания" />
+    </label>
+	<br>
+	<label>Рейтинг
+        <select name = "Рейтинг">
+            <option>1 *</option>
+            <option>2 *</option>
+            <option>3 *</option>
+            <option>4 *</option>
+            <option>5 *</option>            
+        </select>
+    </label>
+	<br>
+	<label>Место
+        <input type="text" name = "Место"/>
+    </label>
+    <br>
+	<label>Комментарий
+        <textarea name = "Комментарий"></textarea>
+    </label>
+	<br>
+    <label>Ссылка
+        <input type="url" name = "Ссылка"/>
+    </label>    
+    <br>
+    <input type="button" value="Добавить событие" onclick="CreateCalendar()"/>
+</form>
+<hr/>
+<h3> Текущее состояние коллекции </h3>
+
+</body>
