@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<h2> This is Event! </h2>
+</head>
+<body>
+<div>
+<h4>Filters</h4>
+<label>Which Events need to display: </label></br>
+<input type = "checkbox" name = "all">all events<br>
+<input type = "checkbox" name = "pastE">past events<br>
+<input type = "checkbox" name = "futureE">future events<br>
+<input type = "checkbox" name = "myE">my events<br>
+<label>Which type of sort: </label></br>
+<input type = "radio" name = "sort" value = "date" checked = "yes">by Date<br>
+<input type = "radio" name = "sort" value = "rating">by Rating<br>
+<input type = "radio" name = "sort" value = "name">by Name<br>
+<input type = "radio" name = "sort" value = "nPart">by Number of Participants<br>
+</div>
+<h4>Info about Event</h4>
+<form name = "CreateEvent">
+Name of Event: <input type = "text" name = "nameOfEvent"> </br>
+Start Date: <input type = "date" name = "start">
+Time of start: <input type = "time" name = "startTime"> </br>
+End Date: <input type = "date" name = "end">
+Time of End: <input type = "time" name = "endTime"> </br>
+Rating of Event: <select name = "rating">
+<option value = "1star">&#10029</option>
+<option value = "2star">&#10029 &#10029</option>
+<option value = "3star">&#10029 &#10029 &#10029</option>
+<option value = "4star">&#10029 &#10029 &#10029 &#10029</option>
+<option value = "5star">&#10029 &#10029 &#10029 &#10029 &#10029</option>
+</select> </br>
+Place of Event: <input type = "text" name = "place"></br>
+Number of Participants: <input type = "number" name = "numbOfParticipants">
+Participants (type participants with comma after each): <input type = "text" name = "participants" size = "50"></br>
+Regularity: <select name = "regularity">
+<option value = "noReg">Not a regular event</option>
+<option value = "everyDay">Every day</option>
+<option value = "everyWeek">Every week</option>
+<option value = "everyMonth">Every month</option>
+<option value = "everyYear">Every year</option>
+</select></br>
+Commentary: </br><textarea name = "comment" cols = "40" rows = "3"></textarea></br>
+<input type = "button" value = "Send" id = "button">
+</form>
+<script language = "JavaScript" src = "Model.js"></script>
+<script language = "JavaScript" src = "Event.js"></script>
+<script language = "JavaScript" src = "Collection.js"></script>
+<script language = "JavaScript" src = "Events.js"></script>
+<script language = "JavaScript" src = "CreateEvent.js"></script>
+</body>
+</html>
