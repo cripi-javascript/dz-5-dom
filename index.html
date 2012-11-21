@@ -1,0 +1,47 @@
+﻿ <!DOCTYPE html>
+<html>
+    <head>
+        <title>Выборки</title>
+        <script language="javascript" type="text/jscript" src="Clone.js"></script>
+        <script language="javascript" type="text/jscript" src="Inherits.js"></script>
+        <script language="javascript" type="text/jscript" src="Base/Model.js"></script>
+        <script language="javascript" type="text/jscript" src="Base/Collection.js"></script>
+        <script language="javascript" type="text/jscript" src="Event/Event.js"></script>
+        <script language="javascript" type="text/jscript" src="Event/Events.js"></script>
+        <script language="javascript" type="text/jscript" src="Event/Example.js"></script>
+    </head>
+    <body>
+        <p>Выбрать все предстоящие события с моим участием отсортированные по рейтигу<button onclick="NewEventWithMeSortByRaiting();">Go</button></p>
+        <p>Выбрать все события, которые произойдут на этой неделе, отсортированые по рейтингу<button onclick="ThisWeekSortedByRaiting();">Go</button></p>
+        <p>Выбрать ближайшее (по времени) событие без моего участия<button onclick="FirstEventWithoutMe();">Go</button></p>
+
+
+        <form>
+            <div>
+                <span class="inputTitle">Название</span>
+                <input id="eventName" type="text" placeholder="Название события"/>
+            </div>
+            <div>
+                <span class="inputTitle">Адрес</span>
+                <input id="eventAddress" type="text" placeholder="Адрес события" />
+            </div>
+            <div>
+                <span class="inputTitle">Время события</span>
+                <input id="eventDateStart" type="date" />
+                <input id="eventTimeStart" type="time" />
+            </div>
+            <div>
+                <span class="inputTitle">Продолжительность события</span>
+                <input id="eventLength" type="time" />
+            </div>
+            <div>
+                <span class="inputTitle">Участники</span>
+                <input id="eventMember" type="Text" placeholder="ФИО участника" />
+            </div>
+            <div>
+                <span class="inputTitle">Рэтинг</span>
+                <input id="eventRaiting" type="range" min="1" max="5" />
+            </div>
+        </form>
+    </body>
+</html>
