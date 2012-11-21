@@ -42,12 +42,12 @@ inherits(Events, Collection);
 
 Events.prototype.write = function () {//выводит на экран все элементы коллекции
     "use strict";
-	/**
-	var el = document.getElementsByTagName('section');
-	if (el.length === 1) {
-		document.body.removeChild(el);
+	var el = document.getElementsByTagName('section')[0];
+    while (typeof el !== 'undefined') {
+        document.body.removeChild(el);
+        el = document.getElementsByTagName('section')[0];
     }
-	**/
+
 	var fragment = document.createDocumentFragment('section'); // фрагмент новых элементов
 
     this.items.forEach(function (NewEvent) {

@@ -44,16 +44,24 @@ Collection.prototype.filter = function (selector) {
  */
 Collection.prototype.sortBy = function (fieldName) {
     "use strict";
+    var items;
     if (fieldName === "start") { // сортировка по началу события
-        return new Collection(this.items.sort(function (Event1, Event2) {return Event1.start - Event2.start; }));
+        items = this.items.sort(function (Event1, Event2) {
+            return Event1.start - Event2.start;
+        });
     }
     if (fieldName === "length") {//сортировка по длине события
-        return new Collection(this.items.sort(function (Event1, Event2) {return (Event1.end - Event1.start) - (Event2.end - Event2.start); }));
+        items = this.items.sort(function (Event1, Event2) {
+            return (Event1.end - Event1.start) - (Event2.end - Event2.start);
+        });
     }
     if (fieldName === "rating") {//сортировка по рейтингу события
-        return new Collection((this.items.sort(function (Event1, Event2) {return Event1.rating - Event2.rating; })).reverse());
+        items = this.items.sort(function (Event1, Event2) {
+            return Event1.rating - Event2.rating;
+        }).reverse();
     }
-	if (fieldName === "") {
-	    return new Collection(this.items);
-	}
+    if (fieldName === "") {
+        items = this.items;
+    }
+    return new Collection(items);
 };
