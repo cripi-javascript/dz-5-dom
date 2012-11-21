@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<title>EVents test</title>
+
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap.min.css" rel="stylesheet">
+
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div style="padding-top:20px;">
+				<form id="add-form" class="form-horizontal">
+					<div class="control-group">
+						<label class="control-label" for="title">Имя события</label>
+						<div class="controls">
+							<input type="text" id="title" name="title" class="required"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="location">Место события</label>
+						<div class="controls">
+							<input type="text" id="location" name="location"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="startDate">Начало события</label>
+						<div class="controls">
+							<input type="datetime" id="startDate" name="startDate"/>
+							<span class="help-inline">dd.MM.yy hh:mm</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="endDate">Конец события</label>
+						<div class="controls">
+							<input type="datetime" id="endDate" name="endDate"/>
+							<span class="help-inline">dd.MM.yy hh:mm</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="repeat">Периодичность события</label>
+						<div class="controls">
+							<input type="text" id="repeat" name="repeat"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="alert">Предупреждение</label>
+						<div class="controls">
+							<input type="text" id="alert" name="alert"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="notes">Заметки</label>
+						<div class="controls">
+							<textarea id="notes" name="notes"></textarea>
+							
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<button type="submit" class="btn">Add</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div>
+				<table class="table table-hover">
+					<thead>
+						<th>Имя</th>
+						<th>Место</th>
+						<th>Начало</th>
+						<th>Конец</th>
+						<th>Периодичность</th>
+						<th>Предупреждение</th>
+						<th>Заметки</th>
+					</thead>
+					<tbody>
+						<td>Имя</td>
+						<td>Место23423423423</td>
+						<td>Начало234234234234</td>
+						<td>Конец234234234234234</td>
+						<td>Периодичность</td>
+						<td>Предупреждение</td>
+						<td>Заметки</td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</body>
+</html>
