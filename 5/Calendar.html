@@ -1,0 +1,76 @@
+﻿﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Календарь</title>
+	<link rel="stylesheet" type="text/css" href="choose.css">
+	<script type="text/javascript" src="Model.js"></script>
+    <script type="text/javascript" src="Collection.js"></script>
+    <script type="text/javascript" src="Event.js"></script>
+    <script type="text/javascript" src="Events.js"></script>
+    <script type="text/javascript" src="CreateCalendar.js"></script>
+</head>
+
+<body>
+<div>
+	<h3>Фильтрация текущей коллекции </h3>
+	<div>
+        <label><input type="checkbox" name="filter" class="filter1"/>Выбрать последущие события</label>
+        <label><input type="checkbox" name="filter" class="filter2"/>Выбрать предыдущие события</label>
+        <div>Сортировать по</div>
+        <label><input type="radio" name = "sort" value = "start"/>Началу</label>
+        <label><input type="radio" name = "sort" value = "length"/>Длительности</label>
+        <label><input type="radio" name = "sort" value = "rating"/>Рейтингу</label>    
+    </div>
+</div>
+<hr/>
+<form name = "Создание события">
+    
+    <label>Название события
+        <input type="text" value="Новое событие" name = "New_Event" autofocus/>
+    </label>
+    <br>
+    <label>Дата начала:
+        <input type="date" name = "start_date"/>
+	</label>
+	<br>
+	<label>Время начала:
+		<input type="time" name = "start_time" />
+    </label>
+    <br>
+    <label>Дата окончания:
+        <input type="date" name = "end_date" />
+	</label>
+	<br>
+	<label>Время окончания:
+		<input type="time" name = "end_time" />
+    </label>
+	<br>
+	<label>Рейтинг
+        <select name = "rating_event">
+            <option>1 *</option>
+            <option>2 *</option>
+            <option>3 *</option>
+            <option>4 *</option>
+            <option>5 *</option>            
+        </select>
+    </label>
+	<br>
+	<label>Место
+        <input type="text" name = "plase_event"/>
+    </label>
+    <br>
+	<label>Комментарий
+        <textarea name = "comment_event"></textarea>
+    </label>
+	<br>
+    <label>Ссылка
+        <input type="url" name = "link_event"/>
+    </label>    
+    <br>
+    <input name="add_event" type="button" value="Добавить событие"/>
+</form>
+<hr/>
+<h3> Текущее состояние коллекции </h3>
+<script type="text/javascript">addListener()</script>
+</body>

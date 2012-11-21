@@ -1,0 +1,16 @@
+﻿
+label {
+    display: block;
+    }
+form label input {
+	position: absolute;
+	left: 300px;
+	}
+form label select {
+	position: absolute;
+	left: 300px;
+	}
+form label textarea {
+	position: absolute;
+	left: 300px;
+	}
