@@ -61,13 +61,13 @@
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<button type="submit" class="btn">Add</button>
+							<input type="button" class="btn" onClick="addClick();" value="Add"/>
 						</div>
 					</div>
 				</form>
 			</div>
 			<div>
-				<table class="table table-hover">
+				<table id="eventTable" class="table table-hover">
 					<thead>
 						<th>Имя</th>
 						<th>Место</th>
@@ -77,18 +77,10 @@
 						<th>Предупреждение</th>
 						<th>Заметки</th>
 					</thead>
-					<tbody>
-						<td>Имя</td>
-						<td>Место23423423423</td>
-						<td>Начало234234234234</td>
-						<td>Конец234234234234234</td>
-						<td>Периодичность</td>
-						<td>Предупреждение</td>
-						<td>Заметки</td>
-					</tbody>
 				</table>
 			</div>
 		</div>
 
 	</body>
+	<script src="event-controller.js"></script>
 </html>
