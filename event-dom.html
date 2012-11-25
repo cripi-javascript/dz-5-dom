@@ -9,7 +9,7 @@
 
 	</head>
 
-	<body>
+	<body onload="initControls()">
 
 		<div class="container">
 			<div style="padding-top:20px;">
@@ -30,38 +30,38 @@
 						<label class="control-label" for="startDate">Начало события</label>
 						<div class="controls">
 							<input type="datetime" id="startDate" name="startDate"/>
-							<span class="help-inline">dd.MM.yy hh:mm</span>
+							<span class="help-inline">dd/MM/yyyy hh:mm</span>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="endDate">Конец события</label>
 						<div class="controls">
 							<input type="datetime" id="endDate" name="endDate"/>
-							<span class="help-inline">dd.MM.yy hh:mm</span>
+							<span class="help-inline">dd/MM/yyyy hh:mm</span>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="repeat">Периодичность события</label>
 						<div class="controls">
-							<input type="text" id="repeat" name="repeat"/>
+							<select id="repeat" name="repeat"></select>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="alert">Предупреждение</label>
 						<div class="controls">
-							<input type="text" id="alert" name="alert"/>
+							<select id="alert" name="alert"></select>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="notes">Заметки</label>
 						<div class="controls">
 							<textarea id="notes" name="notes"></textarea>
-							
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
 							<input type="button" class="btn" onClick="addClick();" value="Add"/>
+							<input type="button" class="btn" onClick="clearTable();" value="Clear"/>
 						</div>
 					</div>
 				</form>
@@ -77,10 +77,18 @@
 						<th>Предупреждение</th>
 						<th>Заметки</th>
 					</thead>
+					<tbody>
+					</tbody>
 				</table>
 			</div>
 		</div>
-
+		
+		<script src="dz-4-oop/validation.js"></script>
+		<script src="dz-4-oop/model.js"></script>
+		<script src="dz-4-oop/collection.js"></script>
+		<script src="dz-4-oop/event-model.js"></script>
+		<script src="dz-4-oop/event-collection.js"></script>
+		<script src="dz-4-oop/utils.js"></script>
+		<script src="event-controller.js"></script>
 	</body>
-	<script src="event-controller.js"></script>
 </html>
