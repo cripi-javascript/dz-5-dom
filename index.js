@@ -148,6 +148,8 @@ app.prototype.paint = function () {
     this.render.innerHTML = this.template({'collection': this.current_collection});
 };
 
+/*
 var application = new app();
 application.init();
 application.paint();
+*/
