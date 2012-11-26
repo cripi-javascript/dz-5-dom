@@ -8,15 +8,20 @@
         <script language="javascript" type="text/jscript" src="Base/Collection.js"></script>
         <script language="javascript" type="text/jscript" src="Event/Event.js"></script>
         <script language="javascript" type="text/jscript" src="Event/Events.js"></script>
-        <script language="javascript" type="text/jscript" src="Event/Example.js"></script>
+        <script language="javascript" type="text/jscript" src="eventFormController.js"></script>
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <p>Выбрать все предстоящие события с моим участием отсортированные по рейтигу<button onclick="NewEventWithMeSortByRaiting();">Go</button></p>
-        <p>Выбрать все события, которые произойдут на этой неделе, отсортированые по рейтингу<button onclick="ThisWeekSortedByRaiting();">Go</button></p>
-        <p>Выбрать ближайшее (по времени) событие без моего участия<button onclick="FirstEventWithoutMe();">Go</button></p>
-
-
-        <form>
+		<div>	
+			Сортировка событий
+			<select onchange="SortEvents(this);">
+				<option value="raiting">по рейтингу</option>
+				<option value="dateStart">по дате</option>
+				<option value="name">по имени события</option>
+			</select>
+		</div>
+        <div id="myEvents"></div>
+        <form id="eventForm" onsubmit="return onSubmitEventForm();">
             <div>
                 <span class="inputTitle">Название</span>
                 <input id="eventName" type="text" placeholder="Название события"/>
@@ -26,21 +31,29 @@
                 <input id="eventAddress" type="text" placeholder="Адрес события" />
             </div>
             <div>
-                <span class="inputTitle">Время события</span>
+                <span class="inputTitle">Время начала события</span>
                 <input id="eventDateStart" type="date" />
                 <input id="eventTimeStart" type="time" />
             </div>
             <div>
-                <span class="inputTitle">Продолжительность события</span>
-                <input id="eventLength" type="time" />
+                <span class="inputTitle">Время конца события</span>
+                <input id="eventDateEnd" type="date" />
+                <input id="eventTimeEnd" type="time" />
             </div>
-            <div>
+            <div id="eventMembers">
                 <span class="inputTitle">Участники</span>
-                <input id="eventMember" type="Text" placeholder="ФИО участника" />
+                <div>
+					<input id="eventMember" type="Text" placeholder="ФИО участника" />
+					<img src="images/add.png" alt="Добавить" align="top" height="27" onclick="AddMember();">
+				</div>
             </div>
             <div>
                 <span class="inputTitle">Рэтинг</span>
                 <input id="eventRaiting" type="range" min="1" max="5" />
+            </div>
+            <div>
+                <span class="inputTitle">&nbsp;</span>
+                <input id="eventSubmit" type="submit" value="Добавить событие" />
             </div>
         </form>
     </body>

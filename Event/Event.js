@@ -9,8 +9,7 @@
 *
 * @example
 *   Event(
-*       "Совещание", "Екатеринбург, ул. Тургенева, д. 4, ауд. 150",
-*       EventTime(new Date(2011, 10, 10, 14, 48, 00), 60), ["я"], 5)
+*       "Совещание", "Екатеринбург, ул. Тургенева, д. 4, ауд. 150", eventTime, ["я"], 5)
 *
 * @see EventTime
 */
@@ -19,13 +18,13 @@ var Event = function (name, address, time, member, raiting) {
     "use strict";
 
     Model.call(this);
-    var myTime = time || new EventTime(new Date(), 60);
+    var myTime = time || new EventTime(new Date(), new Date());
 
     this.set({
         name: name || "Событие",
         address: address || "",
         timeStart: myTime.start,
-        timeLength: myTime.length,
+        timeEnd: myTime.end,
         member: member || [],
         raiting: +raiting || 3
     });
@@ -39,20 +38,20 @@ Event.prototype.constructor = Event;
 * Возвращает объект EventTime
 *
 * @private
-* @param {Number|Date} start          Начало события
-* @param {Number}      [length=0]     Длительность события в минутрах
+* @param {Number|Date} start          Время начала события
+* @param {Number|Date} end            Время конца события
 *
 * @example
-*    EventTime(new Date(2011, 10, 10, 14, 48, 00), 60)
+*    EventTime(new Date(2011, 10, 10, 14, 48, 00), new Date(2011, 10, 10, 15, 48, 00))
 *
 * @return {Object}
 */
-function EventTime(start, length) {
+function EventTime(start, end) {
     "use strict";
 
     return {
-        "start": +start,
-        "length": +length || 0
+        "start": start,
+        "end": end
     };
 }
 
@@ -65,8 +64,8 @@ Event.prototype.validate = function () {
     "use strict";
 
     var errors = [];
-    if (this.get("timeLength") < 0) {
-        errors.push("Продолжительность события меньше допустимой величины");
+    if (this.get("timeStart") < this.get("timeEnd")) {
+        errors.push("Время начала события больше чем время конца");
     }
     if (this.get("raiting") < 0) {
         errors.puch("Рэйтинг собития меньше допустимой величины");

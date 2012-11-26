@@ -101,34 +101,12 @@ Events.prototype.findEventsHappendBeforeTime = function (time) {
 };
 
 /**
- * Сортировка по времени начала события
+ * Сортировка по переданному полю
  *
  * @return {Events}
  */
-Events.prototype.sortEventsByDate = function () {
+Events.prototype.sortEventsBy = function (field) {
     "use strict";
 
-    return this.sortBy("timeStart");
-};
-
-/**
- * Сортировка по рэтингу события
- *
- * @return {Events}
- */
-Events.prototype.sortEventsByRaiting = function () {
-    "use strict";
-
-    return this.sortBy("raiting");
-};
-
-/**
- * Сортировка по имени события
- *
- * @return {Events}
- */
-Events.prototype.sortEventsByName = function () {
-    "use strict";
-
-    return this.sortBy("name");
+    return this.sortBy(field);
 };
