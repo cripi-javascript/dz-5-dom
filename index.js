@@ -9,7 +9,6 @@
 var app = function () {};
 app.prototype.init = function () {
     var self = this;
-    this.action = document.getElementById('add-button');
     this.render = document.getElementById('todo-list');
     this.inputs = {
         'title': document.getElementById('new-todo'),
@@ -42,9 +41,21 @@ app.prototype.init = function () {
             </li> \
         <% }); %>");
 
+    this.action = document.getElementById('add-button');
     this.action.addEventListener('click', function (event) {
         self.action_click(event);
+        event.preventDefault();
     });
+
+    var listeners = document.querySelectorAll('.js-filters');
+    _.each(listeners, function(listener){
+        listener.addEventListener('change', this.change_current_collection);
+    });
+
+    this.filters = function () {
+        var my = document.getElementById('filter_my').checked;
+        var future = document.getElementById('filter_future').checked;
+    };
     // TODO: add events for filters;
 };
 app.prototype.action_click = function (event) { // WTF: this is WINDOW !!!
@@ -54,11 +65,12 @@ app.prototype.action_click = function (event) { // WTF: this is WINDOW !!!
     });
 
     try {
-        var new_event = new this.full_collection.model(info);
+        var model_class = this.full_collection.model;
+        var new_event = new model_class(info);
         this.full_collection.add(new_event);
         this.change_current_collection();
     } catch (e) {
-        console.log("errrore");
+        alert(e.message);
     }
 };
 app.prototype.change_current_collection = function () {
@@ -68,7 +80,7 @@ app.prototype.change_current_collection = function () {
 };
 app.prototype.paint = function () {
     this.render.innerHTML = this.template({'collection': this.current_collection});
-}
+};
 
 var application = new app();
 application.init();
