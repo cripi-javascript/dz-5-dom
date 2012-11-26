@@ -64,7 +64,7 @@ Event.prototype.validate = function () {
     "use strict";
 
     var errors = [];
-    if (this.get("timeStart") < this.get("timeEnd")) {
+    if (this.get("timeStart") > this.get("timeEnd")) {
         errors.push("Время начала события больше чем время конца");
     }
     if (this.get("raiting") < 0) {

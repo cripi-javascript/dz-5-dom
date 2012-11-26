@@ -14,10 +14,15 @@ function onSubmitEventForm() {
 
     try {
         var event = ParseEventForm();
-        ResetEventForm();
-
-        myEvents = myEvents.add(event);
-        RePaintEvents(myEvents);
+        var errors = event.validate();
+        if (errors.length == 0) {
+            ResetEventForm();
+            myEvents = myEvents.add(event);
+            RePaintEvents(myEvents);
+        }
+        else {
+            SetErrorMessage("Невозможно добавить событие, содержатся следующие ошибки:" + errors);
+        }
     } catch (e) {
         console.log(e.message);
         console.log(e.stack);
@@ -45,6 +50,7 @@ function ResetEventForm () {
     var form = document.getElementById("eventForm");
     form.reset();
     DeleteMembers();
+    SetErrorMessage("");
 }
 
 /**
@@ -164,4 +170,16 @@ function DeleteMembers() {
         var memberContainer = membersHTML[i].parentNode;
         memberContainer.parentNode.removeChild(memberContainer);
     }
+}
+
+/**
+ * Устанавливает сообщение об ошибке
+ *
+ * @param message сообщение об ошибке в форме
+ */
+function SetErrorMessage(message) {
+    "use strict";
+
+    var errorContainer = document.getElementById("errorInForm");
+    errorContainer.innerHTML = message;
 }
