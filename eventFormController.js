@@ -32,12 +32,30 @@ function onSubmitEventForm() {
 }
 
 /**
- * Сортировка списка сохраненных событий и их перерисовка
+ * Сортировка и фильтрация списка сохраненных событий и их перерисовка
  */
-function SortEvents(selector) {
+function ShowEventList() {
     "use strict";
 
-    var events = myEvents.sortEventsBy(selector.value);
+    var sortSelector = document.getElementById("eventSortType");
+    var events = myEvents.sortEventsBy(sortSelector.value);
+    if (document.getElementById("lastEvents").checked) {
+        events = events.findPastEvents();
+    }
+    if (document.getElementById("futureEvents").checked) {
+        events = events.findFutureEvents();
+    }
+    var withPerson = document.getElementById("withPerson").value;
+    if (withPerson != "") {
+        events = events.findEventsWithPerson(withPerson);
+    }
+    var withoutPerson = document.getElementById("withoutPerson").value;
+    if (withoutPerson != "") {
+        events = events.findEventsWithoutPerson(withoutPerson);
+    }
+    var raiting = document.getElementById("raitingMore").value;
+    events = events.findEventsWithRaitingMore(raiting);
+
     RePaintEvents(events);
 }
 

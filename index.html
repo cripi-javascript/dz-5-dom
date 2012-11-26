@@ -13,13 +13,37 @@
     </head>
     <body>
 		<div>	
-			Сортировка событий
-			<select onchange="SortEvents(this);">
-				<option value="raiting">по рейтингу</option>
-				<option value="dateStart">по дате</option>
+			<span class="inputTitle">Сортировка событий</span>
+			<select id="eventSortType">
+				<option value="raiting" selected>по рейтингу</option>
+				<option value="dateStart">по дате начала</option>
 				<option value="name">по имени события</option>
 			</select>
 		</div>
+        <div>
+            <span class="inputTitle">Прошедшие события </span>
+            <input id="lastEvents" type="checkbox" />
+        </div>
+        <div>
+            <span class="inputTitle">Предстоящие события</span>
+            <input id="futureEvents" type="checkbox" />
+        </div>
+        <div>
+            <span class="inputTitle">С участием персоны</span>
+            <input id="withPerson" type="textbox" />
+        </div>
+        <div>
+            <span class="inputTitle">Без участия персоны</span>
+            <input id="withoutPerson" type="textbox" />
+        </div>
+        <div>
+            <span class="inputTitle">Рэтинг больше чем</span>
+            <input id="raitingMore" type="range" min="1" max="5" />
+        </div>
+        <div>
+            <span class="inputTitle">&nbsp;</span>
+            <input type="Button" value="Показать список" onclick="ShowEventList();" />
+        </div>
         <div id="myEvents"></div>
         <div id="errorInForm" class="error"></div>
         <form id="eventForm" onsubmit="return onSubmitEventForm();">

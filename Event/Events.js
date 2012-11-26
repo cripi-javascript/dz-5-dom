@@ -101,6 +101,21 @@ Events.prototype.findEventsHappendBeforeTime = function (time) {
 };
 
 /**
+ * События, с рейтингом больше (или равного) переданному
+ *
+ * @param raiting Рэйтинг
+ *
+ * @return {Events}
+ */
+Events.prototype.findEventsWithRaitingMore = function (raiting) {
+    "use strict";
+
+    return this.filter(function (event) {
+        return event.get("raiting") >= raiting;
+    });
+};
+
+/**
  * Сортировка по переданному полю
  *
  * @return {Events}
