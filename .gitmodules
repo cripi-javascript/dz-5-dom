@@ -1,0 +1,6 @@
+[submodule "oop"]
+	path = oop
+	url = https://github.com/pahaz/dz-4-oop.git
+[submodule "todo"]
+	path = todo
+	url = https://github.com/addyosmani/todomvc.git
