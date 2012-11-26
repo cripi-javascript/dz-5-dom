@@ -1,12 +1,24 @@
 /**
  * Created with PyCharm.
- * User: stribog
+ * User: pahaz
  * Date: 11.11.12
  * Time: 22:08
  * To change this template use File | Settings | File Templates.
  */
 
+/**
+ * Application Event.
+ *
+ * @constructor
+ * @this {app}
+ */
 var app = function () {};
+
+/**
+ * Application initialization.
+ *
+ * @this {app}
+ */
 app.prototype.init = function () {
     var self = this;
     this.render = document.getElementById('todo-list');
@@ -48,16 +60,17 @@ app.prototype.init = function () {
     });
 
     var listeners = document.querySelectorAll('.js-filters');
-    _.each(listeners, function(listener){
-        listener.addEventListener('change', this.change_current_collection);
+    var self = this;
+    _.each(listeners, function(listener) {
+        listener.addEventListener('change', self.change_current_collection.bind(self));
     });
-
-    this.filters = function () {
-        var my = document.getElementById('filter_my').checked;
-        var future = document.getElementById('filter_future').checked;
-    };
-    // TODO: add events for filters;
 };
+
+/**
+ * Application click action listener.
+ *
+ * @this {app}
+ */
 app.prototype.action_click = function (event) { // WTF: this is WINDOW !!!
     var info = {};
     _.each(this.inputs, function(num, key) {
@@ -68,16 +81,49 @@ app.prototype.action_click = function (event) { // WTF: this is WINDOW !!!
         var model_class = this.full_collection.model;
         var new_event = new model_class(info);
         this.full_collection.add(new_event);
-        this.change_current_collection();
+        this.change_current_collection(event);
     } catch (e) {
         alert(e.message);
     }
 };
-app.prototype.change_current_collection = function () {
+
+/**
+ * Application change collection listener.
+ *
+ * @this {app}
+ */
+app.prototype.change_current_collection = function (event) {
     this.current_collection = this.full_collection;
-    // TODO: filters detect;
+
+    // TODO: optimization;
+    var my = document.getElementById('filter_my').checked;
+    var future = document.getElementById('filter_future').checked;
+    var sort = false;
+
+    if (document.querySelector('input[name="sort"]:checked') !== null) {
+        sort = document.querySelector('input[name="sort"]:checked').value;
+    }
+
+    var tmp_collection = this.current_collection;
+    if (my) {
+        tmp_collection = tmp_collection.my_events();
+    }
+    if (future) {
+        tmp_collection = tmp_collection.start_after(new Date());
+    }
+    if (sort) {
+        tmp_collection = tmp_collection.sortBy(function (model) { return model.get(sort); });
+    }
+
+    this.current_collection = tmp_collection;
     this.paint();
 };
+
+/**
+ * Render current collection.
+ *
+ * @this {app}
+ */
 app.prototype.paint = function () {
     this.render.innerHTML = this.template({'collection': this.current_collection});
 };
@@ -85,4 +131,3 @@ app.prototype.paint = function () {
 var application = new app();
 application.init();
 application.paint();
-
