@@ -27,16 +27,8 @@ app.prototype.init = function () {
         'start_time': document.getElementById('js-start_time'),
         'end_time': document.getElementById('js-end_time')
     };
-    this.full_collection = new EventsCollection([
-        createNewEvent(new Date(2000, 10, 1), new Date(2000, 11, 1), "First", true),
-        createNewEvent(new Date(2005, 5, 1), new Date(2006, 1, 1), "Second"),
-        createNewEvent(new Date(2001, 10, 1), new Date(2006, 10, 1), "Looooong event", true),
-        createNewEvent(new Date(1991, 5, 1), new Date(2000, 1, 20), "OoOOOoold event"),
-        createNewEvent(new Date(2007, 3, 11), new Date(2008, 1, 5), "from 2007 to 2008", true),
-        createNewEvent(new Date(2000, 5, 12), new Date(2020, 8, 17), "from 2000 To futureeeee"),
-        createNewEvent(new Date(2013, 5, 12), new Date(2017, 1, 27), "Futureeeee", true),
-        createNewEvent(new Date(2006, 10, 1), new Date(2008, 11, 1), "Firth")
-    ]);
+
+    this.full_collection = new EventsCollection(this.load());
     this.current_collection = this.full_collection;
 
     this.template = _.template("\
@@ -67,6 +59,24 @@ app.prototype.init = function () {
 };
 
 /**
+ * Load initial collection data.
+ *
+ * @this {app}
+ */
+app.prototype.load = function () {
+    return [
+        createNewEvent(new Date(2000, 10, 1), new Date(2000, 11, 1), "First", true),
+        createNewEvent(new Date(2005, 5, 1), new Date(2006, 1, 1), "Second"),
+        createNewEvent(new Date(2001, 10, 1), new Date(2006, 10, 1), "Looooong event", true),
+        createNewEvent(new Date(1991, 5, 1), new Date(2000, 1, 20), "OoOOOoold event"),
+        createNewEvent(new Date(2007, 3, 11), new Date(2008, 1, 5), "from 2007 to 2008", true),
+        createNewEvent(new Date(2000, 5, 12), new Date(2020, 8, 17), "from 2000 To futureeeee"),
+        createNewEvent(new Date(2013, 5, 12), new Date(2017, 1, 27), "Futureeeee", true),
+        createNewEvent(new Date(2006, 10, 1), new Date(2008, 11, 1), "Firth")
+    ];
+};
+
+/**
  * Application click action listener.
  *
  * @this {app}
@@ -82,9 +92,19 @@ app.prototype.action_click = function (event) { // WTF: this is WINDOW !!!
         var new_event = new model_class(info);
         this.full_collection.add(new_event);
         this.change_current_collection(event);
+        this.save();
     } catch (e) {
         alert(e.message);
     }
+};
+
+/**
+ * Save collection data.
+ *
+ * @this {app}
+ */
+app.prototype.save = function() {
+
 };
 
 /**
