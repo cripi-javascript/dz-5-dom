@@ -6,18 +6,29 @@
 		<title>EVents test</title>
 
 		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap.min.css" rel="stylesheet">
-
+		<style type="text/css">  
+			body {
+				padding: 20px;  
+			}
+			.invisible {
+				display: none;
+			}
+		</style>
 	</head>
 
-	<body onload="initControls()">
+	<body onload="EventController.initControls()">
 
 		<div class="container">
-			<div style="padding-top:20px;">
+			<div>
 				<form id="add-form" class="form-horizontal">
+					<div id="errors" class="alert alert-error">
+						<a class="close" data-dismiss="alert">×</a>
+						<div id="errors-summary"></div>
+					</div>
 					<div class="control-group">
 						<label class="control-label" for="title">Имя события</label>
 						<div class="controls">
-							<input type="text" id="title" name="title" class="required"/>
+							<input type="text" id="title" name="title"/>
 						</div>
 					</div>
 					<div class="control-group">
@@ -60,8 +71,8 @@
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input type="button" class="btn" onClick="addClick();" value="Add"/>
-							<input type="button" class="btn" onClick="clearTable();" value="Clear"/>
+							<input type="button" class="btn" onClick="EventController.addClick();" value="Add"/>
+							<input type="button" class="btn" onClick="EventController.addClick(true);" value="AddRandom"/>
 						</div>
 					</div>
 				</form>
