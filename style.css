@@ -1,0 +1,11 @@
+﻿.inputTitle {
+    float: left;
+    width: 200px;
+}
+.event {
+    background: #FDF5E6;
+	margin: 10px;
+}
+.error {
+    color: red;
+}

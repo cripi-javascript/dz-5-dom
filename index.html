@@ -1,0 +1,85 @@
+﻿ <!DOCTYPE html>
+<html>
+    <head>
+        <title>Выборки</title>
+        <script language="javascript" type="text/jscript" src="Clone.js"></script>
+        <script language="javascript" type="text/jscript" src="Inherits.js"></script>
+        <script language="javascript" type="text/jscript" src="Base/Model.js"></script>
+        <script language="javascript" type="text/jscript" src="Base/Collection.js"></script>
+        <script language="javascript" type="text/jscript" src="Event/Event.js"></script>
+        <script language="javascript" type="text/jscript" src="Event/Events.js"></script>
+        <script language="javascript" type="text/jscript" src="EventFormController.js"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+		<div>	
+			<span class="inputTitle">Сортировка событий</span>
+			<select id="eventSortType">
+				<option value="raiting" selected>по рейтингу</option>
+				<option value="dateStart">по дате начала</option>
+				<option value="name">по имени события</option>
+			</select>
+		</div>
+        <div>
+            <span class="inputTitle">Прошедшие события </span>
+            <input id="lastEvents" type="checkbox" />
+        </div>
+        <div>
+            <span class="inputTitle">Предстоящие события</span>
+            <input id="futureEvents" type="checkbox" />
+        </div>
+        <div>
+            <span class="inputTitle">С участием персоны</span>
+            <input id="withPerson" type="textbox" />
+        </div>
+        <div>
+            <span class="inputTitle">Без участия персоны</span>
+            <input id="withoutPerson" type="textbox" />
+        </div>
+        <div>
+            <span class="inputTitle">Рэтинг больше чем</span>
+            <input id="raitingMore" type="range" min="1" max="5" />
+        </div>
+        <div>
+            <span class="inputTitle">&nbsp;</span>
+            <input type="Button" value="Показать список" onclick="ShowEventList();" />
+        </div>
+        <div id="myEvents"></div>
+        <div id="errorInForm" class="error"></div>
+        <form id="eventForm" onsubmit="return onSubmitEventForm();">
+            <div>
+                <span class="inputTitle">Название</span>
+                <input id="eventName" type="text" placeholder="Название события"/>
+            </div>
+            <div>
+                <span class="inputTitle">Адрес</span>
+                <input id="eventAddress" type="text" placeholder="Адрес события" />
+            </div>
+            <div>
+                <span class="inputTitle">Время начала события</span>
+                <input id="eventDateStart" type="date" />
+                <input id="eventTimeStart" type="time" value="00:00" />
+            </div>
+            <div>
+                <span class="inputTitle">Время конца события</span>
+                <input id="eventDateEnd" type="date" />
+                <input id="eventTimeEnd" type="time" value="00:00" />
+            </div>
+            <div id="eventMembers">
+                <span class="inputTitle">Участники</span>
+                <div>
+					<input id="eventMember" type="Text" placeholder="ФИО участника" />
+					<img src="images/add.png" alt="Добавить" align="top" height="27" onclick="AddMember();">
+				</div>
+            </div>
+            <div>
+                <span class="inputTitle">Рэтинг</span>
+                <input id="eventRaiting" type="range" min="1" max="5" />
+            </div>
+            <div>
+                <span class="inputTitle">&nbsp;</span>
+                <input id="eventSubmit" type="submit" value="Добавить событие" />
+            </div>
+        </form>
+    </body>
+</html>
