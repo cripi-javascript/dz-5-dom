@@ -16,7 +16,7 @@
 		</style>
 	</head>
 
-	<body onload="Controls.init()">
+	<body onload="EventController.init()">
 
 		<div class="container">
 			<div>
@@ -70,8 +70,8 @@
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input type="button" class="btn" onClick="EventController.addClick();" value="Add"/>
-							<input type="button" class="btn" onClick="EventController.addClick(true);" value="AddRandom"/>
+							<input type="button" class="btn" id="addBtn" value="Add"/>
+							<input type="button" class="btn" id="addRandomBtn" value="AddRandom"/>
 						</div>
 					</div>
 				</form>
@@ -81,7 +81,7 @@
 					<div class="navbar-inner">
 						<a class="brand" href="#">Filter</a>
 						<ul id="filter-bar" class="nav">
-							<li><a id="findPastEvents" onclick="EventController.filter()" href="#">Past</a></li>
+							<li><a id="findPastEvents" href="#">Past</a></li>
 							<li><a id="findFutureEvents" href="#">Future</a></li>
 							<li><a id="findThisWeekEvents" href="#">This week</a></li>
 							<li><a id="findPartyEvents" href="#">Party</a></li>

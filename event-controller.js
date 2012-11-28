@@ -3,7 +3,7 @@ var EventController = (function () {
 	function formatDate(date) {
 		var dd, mm, yyyy, hh, min;
 		dd = date.getDate();
-		mm = date.getMonth();
+		mm = date.getMonth() + 1;
 		yyyy = date.getFullYear();
 		hh = date.getHours();
 		min = date.getMinutes();
@@ -59,16 +59,25 @@ var EventController = (function () {
 		}
 	}
 
-	function filter() {
-		filterBar.pushBtn('findPastEvents');
-	}
-
 	return {
 		addClick : function (random) {
 			addClick(random);
 		},
-		filter : function () {
-			filter();
+		init : function () {
+			Controls.initSelect($('repeat'), Const.REPEAT);
+			Controls.initSelect($('alert'), Const.ALERT);
+			form.clear();
+			$('addBtn').addEventListener('click', function() {
+				addClick();
+			});
+			$('addRandomBtn').addEventListener('click', function() {
+				addClick(true);
+			});
+			$(filterBar.id).addEventListener('click', function(e) {
+				var filtered, cur = e.srcElement || e.originalTarget;
+				filtered = filterBar.invoke(events, cur.id);
+				table.refresh(filtered.items);
+			});
 		}
 	};
 }());

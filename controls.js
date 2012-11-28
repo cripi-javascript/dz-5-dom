@@ -28,12 +28,6 @@ var Controls = (function () {
 		element.className = cn;
 	}
 
-	function removeFromArray(arr, from, to) {
-		var rest = arr.slice((to || from) + 1 || arr.length);
-		arr.length = from < 0 ? arr.length + from : from;
-		return arr.push.apply(arr, rest);
-	}
-
 	function initSelect(select, obj) {
 		var item, index = 0;
 		for (item in obj) {
@@ -114,28 +108,54 @@ var Controls = (function () {
 				this.filters.push(filter);
 			},
 			removeFilter : function (filter) {
-				this.filters = removeFromArray(this.filters, this.filters.indexOf(filter));
+				var index = this.filters.indexOf(filter);
+				if (index !== -1) {
+					this.filters.splice(index, 1);
+				}
 			},
 			pushBtn : function (filter) {
-				var filterBtn = $(filter);
-				if (hasClass("active", filterBtn)) {
+				var wasOn, filterLi = $(filter).parentNode;
+				if (hasClass("active", filterLi)) {
 					this.removeFilter(filter);
+					removeClass("active", filterLi);
+					wasOn = true;
 				} else {
 					this.addFilter(filter);
-					addClass("active", filterBtn);
+					addClass("active", filterLi);
+					wasOn = false;
 				}
+				return wasOn;
+			},
+			invokeInt : function(filter) {
+				this.filtered = this.filtered[filter]();
+			},
+			invoke : function(collection, filter) {
+				var fullRefresh = this.pushBtn(filter);
+				if (this.filtered && !fullRefresh) {
+					this.invokeInt(filter);
+				} else {
+					this.filtered = collection;
+					for (filter in this.filters) {
+						if (this.filters.hasOwnProperty(filter)) {
+							this.invokeInt(this.filters[filter]);
+						}
+					}
+				}
+				return this.filtered;
 			}
 		};
 
-	var table = new Table(), form = new Form(), filterBar = new FilterBar();
 	return {
-		form : form,
-		table : table,
-		filterBar : filterBar,
-		init : function () {
-			initSelect($('repeat'), Const.REPEAT);
-			initSelect($('alert'), Const.ALERT);
-			form.clear();
+		form : new Form(),
+		table : new Table(),
+		filterBar : new FilterBar(),
+		initSelect : function (select, obj) {
+			var item, index = 0;
+			for (item in obj) {
+				if (obj.hasOwnProperty(item)) {
+					select.innerHTML += '<option value="' + item + '">' + obj[item].title + '</option>';
+				}
+			}
 		}
 	};
 }());
