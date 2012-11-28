@@ -22,7 +22,6 @@
 			<div>
 				<form id="add-form" class="form-horizontal">
 					<div id="errors" class="alert alert-error">
-						<a class="close" data-dismiss="alert">×</a>
 						<div id="errors-summary"></div>
 					</div>
 					<div class="control-group">
@@ -78,6 +77,25 @@
 				</form>
 			</div>
 			<div>
+				<div class="navbar">
+					<div class="navbar-inner">
+						<a class="brand" href="#">Filter</a>
+						<ul id="filter-bar" class="nav">
+							<li><a id="findPastEvents" onclick="EventController.filter()" href="#">Past</a></li>
+							<li><a id="findFutureEvents" href="#">Future</a></li>
+							<li><a id="findThisWeekEvents" href="#">This week</a></li>
+							<li><a id="findPartyEvents" href="#">Party</a></li>
+							<li><a id="findNightAlarms" href="#">Night alarms</a></li>
+						</ul>
+						<div class="pull-right">
+							<a class="brand" href="#">Sort</a>
+							<ul id="sort-bar" class="nav">
+								<li><a id="sortByStartDate" href="#">By start date</a></li>
+								<li><a id="sortByNextHappenDate" href="#">By next happen date</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
 				<table id="eventTable" class="table table-hover">
 					<thead>
 						<th>Имя</th>

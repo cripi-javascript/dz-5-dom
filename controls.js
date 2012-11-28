@@ -5,9 +5,14 @@ function $(id) {
 
 var Controls = (function () {
 	'use strict';
+	function hasClass(classname, element) {
+		var cn = element.className;
+		return cn.indexOf(classname) !== -1;
+	}
+
 	function addClass(classname, element) {
 		var cn = element.className;
-		if (cn.indexOf(classname) !== -1) {
+		if (hasClass(classname, element)) {
 			return;
 		}
 		if (cn !== '') {
@@ -21,6 +26,12 @@ var Controls = (function () {
 			rxp = new RegExp("\\s?\\b" + classname + "\\b", "g");
 		cn = cn.replace(rxp, '');
 		element.className = cn;
+	}
+
+	function removeFromArray(arr, from, to) {
+		var rest = arr.slice((to || from) + 1 || arr.length);
+		arr.length = from < 0 ? arr.length + from : from;
+		return arr.push.apply(arr, rest);
 	}
 
 	function initSelect(select, obj) {
@@ -37,7 +48,12 @@ var Controls = (function () {
 		this.body = $(this.id).getElementsByTagName("tbody")[0];
 	}, Form = function () {
 		this.id = 'add-form';
-	}, table = new Table(), form = new Form();
+	}, FilterBar = function () {
+		this.id = 'filter-bar';
+		this.filters = [];
+	}, SortBar = function () {
+		this.id = 'sort-bar';
+	};
 
 	Table.prototype =
 		{
@@ -92,9 +108,30 @@ var Controls = (function () {
 			}
 		};
 
+	FilterBar.prototype =
+		{
+			addFilter : function (filter) {
+				this.filters.push(filter);
+			},
+			removeFilter : function (filter) {
+				this.filters = removeFromArray(this.filters, this.filters.indexOf(filter));
+			},
+			pushBtn : function (filter) {
+				var filterBtn = $(filter);
+				if (hasClass("active", filterBtn)) {
+					this.removeFilter(filter);
+				} else {
+					this.addFilter(filter);
+					addClass("active", filterBtn);
+				}
+			}
+		};
+
+	var table = new Table(), form = new Form(), filterBar = new FilterBar();
 	return {
 		form : form,
 		table : table,
+		filterBar : filterBar,
 		init : function () {
 			initSelect($('repeat'), Const.REPEAT);
 			initSelect($('alert'), Const.ALERT);

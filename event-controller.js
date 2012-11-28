@@ -24,7 +24,8 @@ var EventController = (function () {
 
 	var events = new Events(),
 		table = Controls.table,
-		form = Controls.form;
+		form = Controls.form,
+		filterBar = Controls.filterBar;
 
 	function addClick(random) {
 		var validator, event;
@@ -58,9 +59,16 @@ var EventController = (function () {
 		}
 	}
 
+	function filter() {
+		filterBar.pushBtn('findPastEvents');
+	}
+
 	return {
 		addClick : function (random) {
 			addClick(random);
+		},
+		filter : function () {
+			filter();
 		}
 	};
 }());
