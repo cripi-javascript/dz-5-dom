@@ -1,5 +1,12 @@
 var EventController = (function () {
 	'use strict';
+	/**
+	 * Возвращает строку с датой вида dd/MM/yyyy hh:mm
+	 * 
+	 * @param {Date} date
+	 *
+	 * @return {String}
+	 */
 	function formatDate(date) {
 		var dd, mm, yyyy, hh, min;
 		dd = date.getDate();
@@ -28,6 +35,13 @@ var EventController = (function () {
 		filterBar = Controls.filterBar,
 		sortBar = Controls.sortBar;
 
+	/**
+	 * Обработчик щелчка по кнопке Добавить
+	 * 
+	 * @param {Boolean} random    сгенерировать событие случайным образом или же взять значения из формы
+	 *
+	 * @return {String}
+	 */
 	function addClick(random) {
 		var validator, event;
 		if (random) {
@@ -66,6 +80,9 @@ var EventController = (function () {
 		addClick : function (random) {
 			addClick(random);
 		},
+		/**
+		 * Функция инициализирующая элементы управления на странице
+		 */
 		init : function () {
 			Controls.initSelect($('repeat'), Const.REPEAT);
 			Controls.initSelect($('alert'), Const.ALERT);
