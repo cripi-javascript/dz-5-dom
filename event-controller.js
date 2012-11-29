@@ -25,7 +25,8 @@ var EventController = (function () {
 	var events = new Events(),
 		table = Controls.table,
 		form = Controls.form,
-		filterBar = Controls.filterBar;
+		filterBar = Controls.filterBar,
+		sortBar = Controls.sortBar;
 
 	function addClick(random) {
 		var validator, event;
@@ -52,6 +53,8 @@ var EventController = (function () {
 		validator = event.validate();
 		if (validator.valid) {
 			form.clear();
+			filterBar.clear();
+			sortBar.clear();
 			events.add(event);
 			table.refresh(events.items);
 		} else {
@@ -67,16 +70,22 @@ var EventController = (function () {
 			Controls.initSelect($('repeat'), Const.REPEAT);
 			Controls.initSelect($('alert'), Const.ALERT);
 			form.clear();
-			$('addBtn').addEventListener('click', function() {
+			$('addBtn').addEventListener('click', function () {
 				addClick();
 			});
-			$('addRandomBtn').addEventListener('click', function() {
+			$('addRandomBtn').addEventListener('click', function () {
 				addClick(true);
 			});
-			$(filterBar.id).addEventListener('click', function(e) {
+			$(filterBar.id).addEventListener('click', function (e) {
 				var filtered, cur = e.srcElement || e.originalTarget;
 				filtered = filterBar.invoke(events, cur.id);
 				table.refresh(filtered.items);
+			});
+			$(sortBar.id).addEventListener('click', function (e) {
+				var cur = e.srcElement || e.originalTarget,
+					collection = filterBar.filtered || events;
+				sortBar.invoke(collection, cur.id);
+				table.refresh(collection.items);
 			});
 		}
 	};

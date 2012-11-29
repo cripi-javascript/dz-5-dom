@@ -28,6 +28,16 @@ var Controls = (function () {
 		element.className = cn;
 	}
 
+	function toggleClass(classname, element) {
+		var hadClass = hasClass(classname, element);
+		if (hadClass) {
+			removeClass(classname, element);
+		} else {
+			addClass(classname, element);
+		}
+		return hadClass;
+	}
+
 	function initSelect(select, obj) {
 		var item, index = 0;
 		for (item in obj) {
@@ -104,6 +114,15 @@ var Controls = (function () {
 
 	FilterBar.prototype =
 		{
+			clear : function () {
+				var filterLi, filterLis = $(this.id).getElementsByTagName('li');
+				for (filterLi in filterLis) {
+					if (filterLis.hasOwnProperty(filterLi)) {
+						removeClass("active", filterLis[filterLi]);
+					}
+				}
+				this.filtered = null;
+			},
 			addFilter : function (filter) {
 				this.filters.push(filter);
 			},
@@ -114,25 +133,21 @@ var Controls = (function () {
 				}
 			},
 			pushBtn : function (filter) {
-				var wasOn, filterLi = $(filter).parentNode;
-				if (hasClass("active", filterLi)) {
+				var filterLi = $(filter).parentNode, wasOn = toggleClass("active", filterLi);
+				if (wasOn) {
 					this.removeFilter(filter);
-					removeClass("active", filterLi);
-					wasOn = true;
 				} else {
 					this.addFilter(filter);
-					addClass("active", filterLi);
-					wasOn = false;
 				}
 				return wasOn;
 			},
-			invokeInt : function(filter) {
+			invokeInt : function (filter) {
 				this.filtered = this.filtered[filter]();
 			},
-			invoke : function(collection, filter) {
-				var fullRefresh = this.pushBtn(filter);
+			invoke : function (collection, filterFunc) {
+				var filter, fullRefresh = this.pushBtn(filterFunc);
 				if (this.filtered && !fullRefresh) {
-					this.invokeInt(filter);
+					this.invokeInt(filterFunc);
 				} else {
 					this.filtered = collection;
 					for (filter in this.filters) {
@@ -145,10 +160,34 @@ var Controls = (function () {
 			}
 		};
 
+	SortBar.prototype =
+		{
+			clear : function () {
+				var sortLi, sortLis = $(this.id).getElementsByTagName('li');
+				for (sortLi in sortLis) {
+					if (sortLis.hasOwnProperty(sortLi)) {
+						removeClass("active", sortLis[sortLi]);
+					}
+				}
+				this.sortFunc = '';
+			},
+			pushBtn : function (sortFunc) {
+				var sortLi = $(sortFunc).parentNode;
+				this.clear();
+				this.sortFunc = sortFunc;
+				toggleClass("active", sortLi);
+			},
+			invoke : function (collection, sortFunc) {
+				this.pushBtn(sortFunc);
+				return collection[sortFunc]();
+			}
+		};
+
 	return {
 		form : new Form(),
 		table : new Table(),
 		filterBar : new FilterBar(),
+		sortBar : new SortBar(),
 		initSelect : function (select, obj) {
 			var item, index = 0;
 			for (item in obj) {
