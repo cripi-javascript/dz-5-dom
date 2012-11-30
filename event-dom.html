@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<title>EVents test</title>
+
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap.min.css" rel="stylesheet">
+		<style type="text/css">  
+			body {
+				padding: 20px;  
+			}
+			.invisible {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div>
+				<form id="add-form" class="form-horizontal">
+					<div id="errors" class="alert alert-error">
+						<div id="errors-summary"></div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="title">Имя события</label>
+						<div class="controls">
+							<input type="text" id="title" name="title"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="location">Место события</label>
+						<div class="controls">
+							<input type="text" id="location" name="location"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="startDate">Начало события</label>
+						<div class="controls">
+							<input type="datetime" id="startDate" name="startDate"/>
+							<span class="help-inline">dd/MM/yyyy hh:mm</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="endDate">Конец события</label>
+						<div class="controls">
+							<input type="datetime" id="endDate" name="endDate"/>
+							<span class="help-inline">dd/MM/yyyy hh:mm</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="repeat">Периодичность события</label>
+						<div class="controls">
+							<select id="repeat" name="repeat"></select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="alert">Предупреждение</label>
+						<div class="controls">
+							<select id="alert" name="alert"></select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="notes">Заметки</label>
+						<div class="controls">
+							<textarea id="notes" name="notes"></textarea>
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<input type="button" class="btn" id="addBtn" value="Add"/>
+							<input type="button" class="btn" id="addRandomBtn" value="AddRandom"/>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div>
+				<div class="navbar">
+					<div class="navbar-inner">
+						<a class="brand" href="#">Filter</a>
+						<ul id="filter-bar" class="nav">
+							<li><a id="findPastEvents" href="#">Past</a></li>
+							<li><a id="findFutureEvents" href="#">Future</a></li>
+							<li><a id="findThisWeekEvents" href="#">This week</a></li>
+							<li><a id="findPartyEvents" href="#">Party</a></li>
+							<li><a id="findNightAlarms" href="#">Night alarms</a></li>
+						</ul>
+						<div class="pull-right">
+							<a class="brand" href="#">Sort</a>
+							<ul id="sort-bar" class="nav">
+								<li><a id="sortByStartDate" href="#">By start date</a></li>
+								<li><a id="sortByNextHappenDate" href="#">By next happen date</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<table id="eventTable" class="table table-hover">
+					<thead>
+						<th>Имя</th>
+						<th>Место</th>
+						<th>Начало</th>
+						<th>Конец</th>
+						<th>Периодичность</th>
+						<th>Предупреждение</th>
+						<th>Заметки</th>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<script src="dz-4-oop/validation.js"></script>
+		<script src="dz-4-oop/model.js"></script>
+		<script src="dz-4-oop/collection.js"></script>
+		<script src="dz-4-oop/event-model.js"></script>
+		<script src="dz-4-oop/event-collection.js"></script>
+		<script src="dz-4-oop/utils.js"></script>
+		<script src="controls.js"></script>
+		<script src="event-controller.js"></script>
+	</body>
+</html>
