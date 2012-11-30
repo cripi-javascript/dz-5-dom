@@ -107,3 +107,8 @@ var EventController = (function () {
 		}
 	};
 }());
+
+document.body.addEventListener('load', function () {
+	'use strict';
+	EventController.init();
+}, false);
